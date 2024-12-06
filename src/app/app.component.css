@@ -1,0 +1,14 @@
+/* src/app/shared/components/header/header.component.css */
+.navbar-brand img {
+    margin-right: 10px;
+  }
+  :host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex: 1;
+    padding: 2rem;
+  }

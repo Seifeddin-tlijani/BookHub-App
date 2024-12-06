@@ -1,0 +1,92 @@
+{
+  "books": [
+    {
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "isbn": "978-0141439518",
+      "description": "Pride and Prejudice follows the turbulent relationship between Elizabeth Bennet, the daughter of a country gentleman, and Fitzwilliam Darcy, a rich aristocratic landowner. They must overcome their prejudices and find their way to true love in this masterpiece of romantic fiction.",
+      "year": 1813,
+      "id": "4",
+      "genre": "Nice",
+      "copies": 3
+    },
+    {
+      "id": "7",
+      "title": "The Lord of the Ringssss",
+      "author": "J.R.R. Tolkien",
+      "year": 1954,
+      "genre": "Fantasy",
+      "copies": 9,
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/91SZSW8qSsL.jpg",
+      "description": "The Lord of the Rings is an epic high-fantasy novel that tells the story of a humble hobbit named Frodo Baggins, who must embark on a perilous quest to destroy a powerful ring and save Middle-earth from the Dark Lord Sauron.",
+      "isbn": "978-0544003415",
+      "publisher": "Houghton Mifflin Harcourt",
+      "language": "English",
+      "pages": 1178
+    },
+    {
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "isbn": "978-0062315007",
+      "description": "The Alchemist follows the mystical story of Santiago, an Andalusian shepherd boy who yearns to travel in search of a worldly treasure. His quest will lead him to riches far different—and far more satisfying—than he ever imagined.",
+      "year": 1988,
+      "id": "8"
+    },
+    {
+      "title": "The Odyssey",
+      "author": "Homer",
+      "isbn": "978-0140268867",
+      "description": "The Odyssey is one of two major ancient Greek epic poems attributed to Homer. It follows Odysseus, king of Ithaca, as he makes his journey home after the fall of Troy. It takes Odysseus ten years to reach Ithaca after the ten-year Trojan War.",
+      "year": -800,
+      "id": "10"
+    },
+    {
+      "id": "7f89",
+      "title": "Seif",
+      "author": "seif",
+      "genre": "Nice",
+      "year": 2024,
+      "copies": 0,
+      "imageUrl": "https://bootdey.com/img/Content/avatar/avatar4.png",
+      "description": "A fascinating exploration of modern literature and its impact on society."
+    },
+    {
+      "id": "527a",
+      "title": "Mouayed",
+      "author": "Mouayed",
+      "genre": "dfgdfgdfg",
+      "year": 2024,
+      "copies": 1,
+      "imageUrl": "https://bootdey.com/snippets/preview/social-network-multiple-image-post#",
+      "description": "An innovative perspective on contemporary storytelling and narrative techniques."
+    },
+    {
+      "id": "820e",
+      "title": "rtert",
+      "author": "ertertertee",
+      "genre": "eertert",
+      "year": 2024,
+      "copies": 1,
+      "imageUrl": "https://bootdey.com/img/Content/avatar/avatar5.png",
+      "description": "A groundbreaking work that challenges traditional literary conventions."
+    },
+    {
+      "id": "",
+      "title": "dsfsdf",
+      "author": "Mouayed",
+      "genre": "Nice",
+      "year": 2024,
+      "copies": 1,
+      "imageUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dreamstime.com%2Fphotos-images%2Foffice-employee.html&psig=AOvVaw04UOsoLAGwa6SK6R_1kS1N&ust=1702670885690000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMiP3bzdj4MDFQAAAAAdAAAAABAE"
+    },
+    {
+      "id": "",
+      "title": "ssdfsdf",
+      "author": "Mouayed",
+      "genre": "Nice",
+      "year": 2024,
+      "copies": 12,
+      "imageUrl": "https://bootdey.com/img/Content/avatar/avatar3.png"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>Add New Book</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
+        <!-- Error Alert -->
+        <div *ngIf="error" class="alert alert-danger" role="alert">
+          {{ error }}
+        </div>
+
+        <!-- Title -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" 
+                 class="form-control" 
+                 id="title" 
+                 name="title"
+                 [(ngModel)]="newBook.title" 
+                 required>
+        </div>
+
+        <!-- Author -->
+        <div class="mb-3">
+          <label for="author" class="form-label">Author</label>
+          <input type="text" 
+                 class="form-control" 
+                 id="author" 
+                 name="author"
+                 [(ngModel)]="newBook.author" 
+                 required>
+        </div>
+
+        <!-- Genre -->
+        <div class="mb-3">
+          <label for="genre" class="form-label">Genre</label>
+          <input type="text" 
+                 class="form-control" 
+                 id="genre" 
+                 name="genre"
+                 [(ngModel)]="newBook.genre" 
+                 required>
+        </div>
+
+        <!-- Year -->
+        <div class="mb-3">
+          <label for="year" class="form-label">Publication Year</label>
+          <input type="number" 
+                 class="form-control" 
+                 id="year" 
+                 name="year"
+                 [(ngModel)]="newBook.year" 
+                 required>
+        </div>
+
+        <!-- Copies -->
+        <div class="mb-3">
+          <label for="copies" class="form-label">Number of Copies</label>
+          <input type="number" 
+                 class="form-control" 
+                 id="copies" 
+                 name="copies"
+                 [(ngModel)]="newBook.copies" 
+                 required
+                 min="0">
+        </div>
+
+        <!-- Image URL -->
+        <div class="mb-3">
+          <label for="imageUrl" class="form-label">Image URL</label>
+          <input type="url" 
+                 class="form-control" 
+                 id="imageUrl" 
+                 name="imageUrl"
+                 [(ngModel)]="newBook.imageUrl" 
+                 required>
+        </div>
+
+        <!-- Preview -->
+        <div class="mb-3" *ngIf="newBook.imageUrl">
+          <label class="form-label">Image Preview</label>
+          <div class="text-center">
+            <img [src]="newBook.imageUrl" 
+                 class="img-thumbnail" 
+                 style="max-height: 200px;"
+                 alt="Book cover preview">
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-end gap-2">
+          <button type="button" 
+                  class="btn btn-secondary" 
+                  (click)="cancel()">
+            Cancel
+          </button>
+          <button type="submit" 
+                  class="btn btn-primary"
+                  [disabled]="saving">
+            {{ saving ? 'Saving...' : 'Add Book' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

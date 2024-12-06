@@ -1,0 +1,107 @@
+<!-- src/app/features/home/components/book-list/book-list.component.html -->
+<div class="container-fluid py-4">
+  <!-- Search and Filter Section -->
+  <div class="search-section">
+    <div class="search-container">
+      <div class="search-box">
+        <span class="search-icon">
+          <i class="fas fa-search"></i>
+        </span>
+        <input 
+          type="text" 
+          class="search-input" 
+          placeholder="Search by title or author..."
+          [(ngModel)]="searchTerm"
+          (input)="onSearch()">
+        <button *ngIf="searchTerm" 
+                class="btn btn-clear" 
+                (click)="clearSearch()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="filter-group">
+        <div class="dropdown">
+          <button class="filter-button" [class.active]="showGenreDropdown" (click)="toggleGenreDropdown()">
+            {{ selectedGenre || 'All Genres' }}
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="dropdown-menu" [class.show]="showGenreDropdown">
+            <button class="dropdown-item" (click)="selectedGenre = ''; onGenreChange(); toggleGenreDropdown()">
+              All Genres
+            </button>
+            <button class="dropdown-item" *ngFor="let genre of genres" 
+                    (click)="selectedGenre = genre; onGenreChange(); toggleGenreDropdown()">
+              {{ genre }}
+            </button>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="filter-button sort-button" [class.active]="showSortDropdown" (click)="toggleSortDropdown()">
+            Sort by {{ sortBy | titlecase }}
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="dropdown-menu" [class.show]="showSortDropdown">
+            <button class="dropdown-item" (click)="sortBy = 'year'; onSortChange(); toggleSortDropdown()">
+              Year
+            </button>
+            <button class="dropdown-item" (click)="sortBy = 'title'; onSortChange(); toggleSortDropdown()">
+              Title
+            </button>
+            <button class="dropdown-item" (click)="sortBy = 'author'; onSortChange(); toggleSortDropdown()">
+              Author
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-state" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Error State -->
+  <div class="alert alert-danger" *ngIf="error">
+    <i class="fas fa-exclamation-circle me-2"></i>
+    {{ error }}
+    <button class="btn btn-outline-danger ms-3" (click)="loadBooks()">
+      <i class="fas fa-sync-alt me-1"></i> Try Again
+    </button>
+  </div>
+
+  <!-- No Results -->
+  <div class="alert alert-info" *ngIf="!loading && !error && filteredBooks.length === 0">
+    <i class="fas fa-search fa-2x text-muted mb-3"></i>
+    <p class="lead mb-0">No books found matching your search criteria</p>
+  </div>
+
+  <!-- Books Grid -->
+  <div class="books-grid" *ngIf="!loading && !error && filteredBooks.length > 0">
+    <div *ngFor="let book of filteredBooks; trackBy: trackById">
+      <div class="book-card">
+        <div class="card-img-wrapper">
+          <img [src]="book.imageUrl" [alt]="book.title" class="card-img">
+          <span class="genre-badge">{{ book.genre }}</span>
+        </div>
+        <div class="card-content">
+          <h3 class="book-title">{{ book.title }}</h3>
+          <p class="book-author">{{ book.author }}</p>
+          <div class="book-meta">
+            <span class="year">{{ book.year }}</span>
+            <span class="badge" [ngClass]="book.copies > 0 ? 'bg-success' : 'bg-danger'">
+              {{ book.copies > 0 ? 'Available' : 'Out of Stock' }}
+            </span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a [routerLink]="['/book', book.id]" class="btn btn-primary w-100">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

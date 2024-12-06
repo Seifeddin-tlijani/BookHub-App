@@ -1,0 +1,186 @@
+<div class="edit-container">
+  <div class="header">
+    <h2>Edit Book</h2>
+    <div class="breadcrumb">
+      <a routerLink="/books">Books</a> / Edit Book
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <!-- Left side - Image and basic info -->
+    <div class="left-panel">
+      <div class="book-image-container">
+        <div class="book-image" *ngIf="originalBook?.imageUrl">
+          <img [src]="originalBook?.imageUrl" alt="Book cover" class="book-cover">
+        </div>
+        <div class="image-placeholder" *ngIf="!originalBook?.imageUrl">
+          <i class="fas fa-book"></i>
+          <span>No image available</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side - Form -->
+    <div class="right-panel">
+      <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" class="book-form">
+        <!-- Basic Information -->
+        <div class="form-section">
+          <h3>Basic Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="title">Title*</label>
+              <input
+                type="text"
+                id="title"
+                formControlName="title"
+                class="form-control"
+                placeholder="Enter book title"
+              >
+              <div class="error-message" *ngIf="bookForm.get('title')?.touched && bookForm.get('title')?.invalid">
+                Title is required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="author">Author*</label>
+              <input
+                type="text"
+                id="author"
+                formControlName="author"
+                class="form-control"
+                placeholder="Enter author name"
+              >
+              <div class="error-message" *ngIf="bookForm.get('author')?.touched && bookForm.get('author')?.invalid">
+                Author is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Publication Details -->
+        <div class="form-section">
+          <h3>Publication Details</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="isbn">ISBN*</label>
+              <input
+                type="text"
+                id="isbn"
+                formControlName="isbn"
+                class="form-control"
+                placeholder="Enter ISBN"
+              >
+              <div class="error-message" *ngIf="bookForm.get('isbn')?.touched && bookForm.get('isbn')?.invalid">
+                ISBN is required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="year">Published Year*</label>
+              <input
+                type="number"
+                id="year"
+                formControlName="year"
+                class="form-control"
+                placeholder="Enter published year"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="publisher">Publisher</label>
+              <input
+                type="text"
+                id="publisher"
+                formControlName="publisher"
+                class="form-control"
+                placeholder="Enter publisher"
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Details -->
+        <div class="form-section">
+          <h3>Additional Details</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="genre">Genre*</label>
+              <select
+                id="genre"
+                formControlName="genre"
+                class="form-control"
+              >
+                <option value="">Select a genre</option>
+                <option *ngFor="let genre of genres" [value]="genre">{{genre}}</option>
+              </select>
+              <div class="error-message" *ngIf="bookForm.get('genre')?.touched && bookForm.get('genre')?.invalid">
+                Genre is required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="language">Language</label>
+              <input
+                type="text"
+                id="language"
+                formControlName="language"
+                class="form-control"
+                placeholder="Enter language"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="pages">Pages</label>
+              <input
+                type="number"
+                id="pages"
+                formControlName="pages"
+                class="form-control"
+                placeholder="Enter number of pages"
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Inventory -->
+        <div class="form-section">
+          <h3>Inventory</h3>
+          <div class="form-group">
+            <label for="copies">Number of Copies*</label>
+            <input
+              type="number"
+              id="copies"
+              formControlName="copies"
+              class="form-control"
+              placeholder="Enter number of copies"
+            >
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-section">
+          <h3>Description</h3>
+          <div class="form-group">
+            <textarea
+              id="description"
+              formControlName="description"
+              class="form-control"
+              rows="4"
+              placeholder="Enter book description"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" routerLink="/books">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+          <button type="submit" class="btn btn-primary" [disabled]="!bookForm.valid">
+            <i class="fas fa-save"></i> Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
