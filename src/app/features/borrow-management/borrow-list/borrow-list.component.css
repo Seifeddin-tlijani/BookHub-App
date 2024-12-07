@@ -1,0 +1,123 @@
+.borrows-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .page-title {
+    color: #333;
+    margin-bottom: 24px;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .borrows-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+  }
+  
+  .borrow-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .borrow-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .borrow-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .book-info h3 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.25rem;
+  }
+  
+  .book-id {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 4px;
+    display: block;
+  }
+  
+  .status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #4CAF50;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .status-badge.returned {
+    background: #9E9E9E;
+  }
+  
+  .borrow-details {
+    margin: 16px 0;
+  }
+  
+  .detail-row {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    color: #555;
+  }
+  
+  .detail-row i {
+    width: 20px;
+    color: #666;
+  }
+  
+  .borrow-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+  }
+  
+  .btn-action {
+    flex: 1;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-action:hover {
+    background: #45a049;
+  }
+  
+  .btn-action.returned {
+    background: #9E9E9E;
+    cursor: default;
+  }
+  
+  .btn-action.btn-details {
+    background: #2196F3;
+  }
+  
+  .btn-action.btn-details:hover {
+    background: #1976D2;
+  }

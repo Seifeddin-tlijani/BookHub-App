@@ -21,4 +21,11 @@ export class BorrowListComponent implements OnInit {
     });
   }
 
+  getDurationInDays(borrowDate: string, returnDate: string): number {
+    const start = new Date(borrowDate);
+    const end = new Date(returnDate);
+    const diffTime = Math.abs(end.getTime() - start.getTime());
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  }
+
 }

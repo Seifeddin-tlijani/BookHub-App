@@ -2,8 +2,8 @@
   <nav>
     <div class="logo">
       <a [routerLink]="['/home']">
-        <i class="fas fa-book-open fa-lg me-2"></i>
-        Library App
+        <i class="fa-solid fa-tree"></i> 
+        Chaambi
       </a>
     </div>
     <div class="nav-links">
@@ -15,6 +15,10 @@
         <i class="fas fa-book me-1"></i>
         Books
       </a>
+      <a [routerLink]="['/borrows']" routerLinkActive="active">
+        <i class="fa-solid fa-cart-shopping"></i>        Borrows
+      </a>
+
       <a [routerLink]="['/about']" routerLinkActive="active">
         <i class="fas fa-info-circle me-1"></i>
         About

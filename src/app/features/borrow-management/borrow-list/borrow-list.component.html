@@ -1,21 +1,69 @@
-<h2>Gestion des emprunts</h2>
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Titre</th>
-      <th>Date d'emprunt</th>
-      <th>Date de retour</th>
-      <th>Statut</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let borrow of borrows">
-      <td>{{ borrow.id }}</td>
-      <td>{{ borrow.bookTitle }}</td>
-      <td>{{ borrow.borrowDate }}</td>
-      <td>{{ borrow.returnDate }}</td>
-      <td>{{ borrow.status }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="borrows-container">
+  <h2 class="page-title">
+    <i class="fa-solid fa-cart-shopping me-2"></i>
+    Borrowed Books Management
+  </h2>
+
+  <div class="borrows-list">
+    <div class="borrow-card" *ngFor="let borrow of borrows">
+      <div class="borrow-header">
+        <div class="book-info">
+          <h3>{{ borrow.bookTitle }}</h3>
+          <span class="book-id">ID: {{ borrow.id }}</span>
+        </div>
+        <span
+          class="status-badge"
+          [class.returned]="borrow.status === 'Returned'"
+        >
+          {{ borrow.status }}
+        </span>
+      </div>
+
+      <div class="borrow-details">
+        <div class="detail-row">
+          <i class="fas fa-user me-2"></i>
+          <span><strong>User ID:</strong> {{ borrow.userId }}</span>
+        </div>
+        <div class="detail-row">
+          <i class="fas fa-calendar-plus me-2"></i>
+          <span
+            ><strong>Borrow Date:</strong>
+            {{ borrow.borrowDate | date : "medium" }}</span
+          >
+        </div>
+        <div class="detail-row">
+          <i class="fas fa-calendar-check me-2"></i>
+          <span
+            ><strong>Return Date:</strong>
+            {{ borrow.returnDate | date : "medium" }}</span
+          >
+        </div>
+        <div class="detail-row">
+          <i class="fas fa-clock me-2"></i>
+          <span
+            ><strong>Duration:</strong>
+            {{ getDurationInDays(borrow.borrowDate, borrow.returnDate) }} days
+          </span>
+        </div>
+      </div>
+
+      <div class="borrow-actions">
+        <button
+          class="btn-action"
+          [class.returned]="borrow.status === 'Returned'"
+        >
+          <i
+            class="fas"
+            [class.fa-undo]="borrow.status === 'Borrowed'"
+            [class.fa-check]="borrow.status === 'Returned'"
+          ></i>
+          {{ borrow.status === "Borrowed" ? "Return Book" : "Returned" }}
+        </button>
+        <button class="btn-action btn-details">
+          <i class="fas fa-info-circle"></i>
+          View Details
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

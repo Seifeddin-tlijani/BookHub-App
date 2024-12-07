@@ -16,6 +16,11 @@ nav {
   margin: 0 auto;
   height: 60px;
 }
+.logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
 
 .logo {
   display: flex;

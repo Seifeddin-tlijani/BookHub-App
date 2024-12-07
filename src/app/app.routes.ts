@@ -22,5 +22,9 @@ export const routes: Routes = [
     {
       path: 'books/edit/:id',
       loadChildren: () => import('./features/book-edit/book-edit.module').then(m => m.BookEditModule)
+    },
+    {
+      path: 'borrows',
+      loadChildren: () => import('./features/borrow-management/borrow-management.module').then(m => m.BorrowManagementModule)
     }
 ];

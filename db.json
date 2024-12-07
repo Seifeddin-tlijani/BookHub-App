@@ -34,7 +34,7 @@
       "author": "Michelle Obama",
       "year": 2018,
       "genre": "Biography",
-      "copies": 5,
+      "copies": 12,
       "imageUrl": "https://m.media-amazon.com/images/I/81h2gWPTYJL.jpg",
       "description": "Michelle Obama shares the experiences that shaped her, from her childhood in Chicago to her role as the first African-American First Lady of the United States.",
       "isbn": "978-1524763138",
@@ -48,7 +48,7 @@
       "author": "James Clear",
       "year": 2018,
       "genre": "Self-help",
-      "copies": 12,
+      "copies": 11,
       "imageUrl": "https://cultivatewhatmatters.com/cdn/shop/articles/atomic-habits.jpg?v=1624827508",
       "description": "A guide to building good habits and breaking bad ones, focusing on small, actionable changes that lead to remarkable results over time.",
       "isbn": "978-0735211292",
@@ -62,7 +62,7 @@
       "author": "Tara Westover",
       "year": 2018,
       "genre": "Memoir",
-      "copies": 6,
+      "copies": 5,
       "imageUrl": "https://m.media-amazon.com/images/I/81WojUxbbFL.jpg",
       "description": "A powerful memoir of a young woman who grew up in a strict and abusive household in rural Idaho and later pursued an education that transformed her life.",
       "isbn": "978-0399590504",
@@ -83,20 +83,6 @@
       "publisher": "Viking",
       "language": "English",
       "pages": 304
-    },
-    {
-      "id": "7",
-      "title": "The Silent Patient",
-      "author": "Alex Michaelides",
-      "year": 2019,
-      "genre": "Thriller",
-      "copies": 5,
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoZwQdWbGp2mOS7IPb_6qRUq3J4Dx1MQyDOQ&s",
-      "description": "A psychological thriller about a woman who stops speaking after a horrific act of violence and the therapist determined to unravel her mystery.",
-      "isbn": "978-1250301697",
-      "publisher": "Celadon Books",
-      "language": "English",
-      "pages": 336
     },
     {
       "id": "8",
@@ -226,6 +212,94 @@
       "userId": 1,
       "borrowDate": "2024-12-07T06:25:39.369Z",
       "returnDate": "2024-12-21T06:25:39.369Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:28:33.989Z",
+      "returnDate": "2024-12-21T06:28:33.993Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:28:36.373Z",
+      "returnDate": "2024-12-21T06:28:36.373Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:28:38.077Z",
+      "returnDate": "2024-12-21T06:28:38.077Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:28:39.293Z",
+      "returnDate": "2024-12-21T06:28:39.293Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:28:40.991Z",
+      "returnDate": "2024-12-21T06:28:40.991Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Atomic Habits",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:32:29.651Z",
+      "returnDate": "2024-12-21T06:32:29.651Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:52:31.385Z",
+      "returnDate": "2024-12-21T06:52:31.385Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Educated",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:54:15.409Z",
+      "returnDate": "2024-12-21T06:54:15.409Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T07:05:04.798Z",
+      "returnDate": "2024-12-21T07:05:04.798Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T07:05:35.935Z",
+      "returnDate": "2024-12-21T07:05:35.935Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T07:08:58.316Z",
+      "returnDate": "2024-12-21T07:08:58.316Z",
       "status": "Borrowed"
     }
   ]
