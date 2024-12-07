@@ -6,14 +6,13 @@ import { HomeRoutingModule } from './home-routing.module';
 import { BookListComponent } from './components/book-list/book-list.component';
 
 @NgModule({
-  declarations: [
-    BookListComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
-    HomeRoutingModule
-  ]
+    HomeRoutingModule,
+    BookListComponent,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}

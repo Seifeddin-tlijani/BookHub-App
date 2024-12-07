@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../../../core/models/book';
 import { BookService } from '../../../../core/services/book.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-book-list',
+  standalone: true,
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css'],
 })
@@ -33,7 +38,7 @@ export class BookListComponent implements OnInit {
       error: (error) => {
         this.error = error;
         this.loading = false;
-      }
+      },
     });
   }
 
