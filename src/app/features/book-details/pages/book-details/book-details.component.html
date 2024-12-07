@@ -40,7 +40,26 @@
         </div>
         <div class="availability-status" [class.available]="book.copies > 0">
           <i class="fas" [class.fa-check-circle]="book.copies > 0" [class.fa-times-circle]="book.copies === 0"></i>
-          {{ book.copies > 0 ? book.copies + ' copies available' : 'Out of stock' }}
+          {{ book.copies > 0 ? 'Available' : 'Not Available' }}
+          <span class="copies-count">({{ book.copies }} {{ book.copies === 1 ? 'copy' : 'copies' }})</span>
+        </div>
+        
+        <!-- Borrow Button -->
+        <div class="borrow-section">
+          <button 
+            class="btn btn-primary borrow-btn" 
+            (click)="borrowBook()"
+            [disabled]="!book || book.copies === 0 || borrowing">
+            <i class="fas me-2" 
+               [class.fa-book-reader]="!borrowing" 
+               [class.fa-spinner]="borrowing" 
+               [class.fa-spin]="borrowing"></i>
+            {{ borrowing ? 'Borrowing...' : 'Borrow Book' }}
+          </button>
+          <p class="text-muted mt-2" *ngIf="book && book.copies === 0">
+            <i class="fas fa-info-circle me-2"></i>
+            This book is currently unavailable
+          </p>
         </div>
       </div>
 
@@ -88,15 +107,13 @@
         <div class="book-tags" *ngIf="book.tags?.length">
           <h2>Tags</h2>
           <div class="tags-container">
-            <span class="tag" *ngFor="let tag of book.tags">
-              {{ tag }}
-            </span>
+            <span class="tag" *ngFor="let tag of book.tags">{{ tag }}</span>
           </div>
         </div>
 
         <!-- Action Buttons -->
         <div class="action-buttons">
-          <button class="btn btn-primary" (click)="onBack()">
+          <button class="btn btn-outline-primary" (click)="onBack()">
             <i class="fas fa-arrow-left me-2"></i>Back to List
           </button>
           <button class="btn btn-danger" (click)="deleteBook()" [disabled]="loading">
@@ -109,9 +126,10 @@
 
   <!-- No Book Found State -->
   <div *ngIf="!loading && !error && !book" class="alert alert-warning" role="alert">
+    <i class="fas fa-exclamation-triangle me-2"></i>
     No book details found.
     <button class="btn btn-outline-warning ms-3" (click)="onBack()">
-      Return to Book List
+      <i class="fas fa-arrow-left me-2"></i>Return to Book List
     </button>
   </div>
 </div>

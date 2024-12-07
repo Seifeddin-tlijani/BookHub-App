@@ -1,0 +1,21 @@
+<h2>Gestion des emprunts</h2>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Titre</th>
+      <th>Date d'emprunt</th>
+      <th>Date de retour</th>
+      <th>Statut</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let borrow of borrows">
+      <td>{{ borrow.id }}</td>
+      <td>{{ borrow.bookTitle }}</td>
+      <td>{{ borrow.borrowDate }}</td>
+      <td>{{ borrow.returnDate }}</td>
+      <td>{{ borrow.status }}</td>
+    </tr>
+  </tbody>
+</table>

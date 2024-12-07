@@ -4,7 +4,7 @@
     <div class="title-wrapper">
       <h1 class="main-title">
         <i class="fas fa-book-open fa-lg me-2"></i>
-        Book Management
+        Chaanbi Book Management
       </h1>
       <p class="subtitle">Manage your library's book collection</p>
     </div>
@@ -14,7 +14,6 @@
     </button>
   </div>
 
-  <!-- Add Book Form -->
   <div class="form-card" *ngIf="showAddForm" [@slideInOut]>
     <div class="form-header">
       <h2>
@@ -241,7 +240,6 @@
       </button>
     </div>
 
-    <!-- Loading State -->
     <div class="loading-state" *ngIf="loading">
       <div class="spinner-border text-primary" role="status">
         <span class="visually-hidden">Loading...</span>

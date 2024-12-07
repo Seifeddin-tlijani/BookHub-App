@@ -34,7 +34,7 @@
       "author": "Michelle Obama",
       "year": 2018,
       "genre": "Biography",
-      "copies": 9,
+      "copies": 5,
       "imageUrl": "https://m.media-amazon.com/images/I/81h2gWPTYJL.jpg",
       "description": "Michelle Obama shares the experiences that shaped her, from her childhood in Chicago to her role as the first African-American First Lady of the United States.",
       "isbn": "978-1524763138",
@@ -76,7 +76,7 @@
       "author": "Matt Haig",
       "year": 2020,
       "genre": "Fiction",
-      "copies": 8,
+      "copies": 5,
       "imageUrl": "https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg",
       "description": "Nora Seed finds herself in a library between life and death, where each book represents a different life she could have lived.",
       "isbn": "978-0525559474",
@@ -153,6 +153,80 @@
       "publisher": "Gallimard",
       "language": "Français",
       "pages": 184
+    }
+  ],
+  "borrows": [
+    {
+      "id": 1,
+      "bookTitle": "L'Alchimiste",
+      "userId": 101,
+      "borrowDate": "2024-12-01",
+      "returnDate": "2024-12-15",
+      "status": "Borrowed"
+    },
+    {
+      "id": 2,
+      "bookTitle": "Le Petit Prince",
+      "userId": 102,
+      "borrowDate": "2024-11-20",
+      "returnDate": "2024-12-05",
+      "status": "Returned"
+    },
+    {
+      "id": 0,
+      "bookTitle": "The Midnight Library",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:22:36.491Z",
+      "returnDate": "2024-12-21T06:22:36.497Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "The Midnight Library",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:22:39.789Z",
+      "returnDate": "2024-12-21T06:22:39.789Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "The Midnight Library",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:22:42.209Z",
+      "returnDate": "2024-12-21T06:22:42.209Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:25:32.777Z",
+      "returnDate": "2024-12-21T06:25:32.777Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:25:35.385Z",
+      "returnDate": "2024-12-21T06:25:35.385Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:25:37.537Z",
+      "returnDate": "2024-12-21T06:25:37.537Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Becoming",
+      "userId": 1,
+      "borrowDate": "2024-12-07T06:25:39.369Z",
+      "returnDate": "2024-12-21T06:25:39.369Z",
+      "status": "Borrowed"
     }
   ]
 }

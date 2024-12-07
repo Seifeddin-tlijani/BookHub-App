@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../../../core/models/book';
 import { BookService } from '../../../../core/services/book.service';
+import { BorrowService } from '../../../../core/services/borrow.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Borrow } from '../../../../core/models/borrow';
+import { of, catchError, finalize, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-book-list',
@@ -23,8 +26,9 @@ export class BookListComponent implements OnInit {
   genres: string[] = [];
   showGenreDropdown: boolean = false;
   showSortDropdown: boolean = false;
+  borrowingBooks: Set<string> = new Set();
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService, private borrowService: BorrowService) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -120,6 +124,50 @@ export class BookListComponent implements OnInit {
     });
 
     this.filteredBooks = filtered;
+  }
+
+  borrowBook(book: Book) {
+    if (!book || book.copies <= 0 || this.borrowingBooks.has(book.id)) {
+      return;
+    }
+
+    this.borrowingBooks.add(book.id);
+    const borrow: Borrow = {
+      id: 0,
+      bookTitle: book.title,
+      userId: 1,
+      borrowDate: new Date().toISOString(),
+      returnDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+      status: 'Borrowed'
+    };
+
+    this.borrowService.addBorrow(borrow).pipe(
+      switchMap(() => {
+        const updatedBook = { ...book, copies: book.copies - 1 };
+        return this.bookService.updateBook(updatedBook);
+      }),
+      catchError((error) => {
+        console.error('Error in borrow process:', error);
+        alert('Failed to borrow book. Please try again.');
+        return of(null);
+      }),
+      finalize(() => {
+        this.borrowingBooks.delete(book.id);
+      })
+    ).subscribe({
+      next: (updatedBook) => {
+        if (updatedBook) {
+          // Update both arrays
+          this.books = this.books.map(b => b.id === book.id ? updatedBook : b);
+          this.filteredBooks = this.filteredBooks.map(b => b.id === book.id ? updatedBook : b);
+          alert('Book borrowed successfully!');
+        }
+      }
+    });
+  }
+
+  isBorrowing(bookId: string): boolean {
+    return this.borrowingBooks.has(bookId);
   }
 
   trackById(index: number, book: Book): string {

@@ -10,7 +10,6 @@
           {{ error }}
         </div>
 
-        <!-- Title -->
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input type="text" 
@@ -21,7 +20,6 @@
                  required>
         </div>
 
-        <!-- Author -->
         <div class="mb-3">
           <label for="author" class="form-label">Author</label>
           <input type="text" 
@@ -32,7 +30,6 @@
                  required>
         </div>
 
-        <!-- Genre -->
         <div class="mb-3">
           <label for="genre" class="form-label">Genre</label>
           <input type="text" 
@@ -43,7 +40,6 @@
                  required>
         </div>
 
-        <!-- Year -->
         <div class="mb-3">
           <label for="year" class="form-label">Publication Year</label>
           <input type="number" 
@@ -54,7 +50,6 @@
                  required>
         </div>
 
-        <!-- Copies -->
         <div class="mb-3">
           <label for="copies" class="form-label">Number of Copies</label>
           <input type="number" 
@@ -66,7 +61,6 @@
                  min="0">
         </div>
 
-        <!-- Image URL -->
         <div class="mb-3">
           <label for="imageUrl" class="form-label">Image URL</label>
           <input type="url" 
@@ -77,7 +71,6 @@
                  required>
         </div>
 
-        <!-- Preview -->
         <div class="mb-3" *ngIf="newBook.imageUrl">
           <label class="form-label">Image Preview</label>
           <div class="text-center">
@@ -88,7 +81,6 @@
           </div>
         </div>
 
-        <!-- Buttons -->
         <div class="d-flex justify-content-end gap-2">
           <button type="button" 
                   class="btn btn-secondary" 
