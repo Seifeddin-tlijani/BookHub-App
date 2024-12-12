@@ -2,9 +2,14 @@
 
 A modern, responsive library management system built with Angular, featuring book borrowing, searching, and management capabilities.
 
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+
 ## Technology Stack
 
 ### Frontend
+
 - **Framework**: Angular 18.2.4
 - **Architecture**: Standalone Components
 - **State Management**: RxJS for reactive state handling
@@ -14,6 +19,7 @@ A modern, responsive library management system built with Angular, featuring boo
 - **Routing**: Angular Router with lazy loading
 
 ### Backend
+
 - **API Server**: JSON Server
 - **Database**: JSON file (db.json)
 - **HTTP Client**: Angular HttpClient
@@ -21,6 +27,7 @@ A modern, responsive library management system built with Angular, featuring boo
 ## Features
 
 ### Book Management
+
 - View all books in a responsive grid layout
 - Search books by title or author
 - Filter books by genre
@@ -29,12 +36,14 @@ A modern, responsive library management system built with Angular, featuring boo
 - Track book availability and copies
 
 ### Borrowing System
+
 - Borrow books with automatic due date calculation (14 days)
 - Track borrowed books status
 - Prevent borrowing of unavailable books
 - Real-time UI updates for book availability
 
 ### User Interface
+
 - Modern, responsive design
 - Grid layout with 5 books per row (responsive)
 - Book cards with hover effects
@@ -62,10 +71,12 @@ src/
 ## Key Components
 
 ### Services
+
 - **BookService**: Handles book-related operations
 - **BorrowService**: Manages book borrowing functionality
 
 ### Components
+
 - **BookListComponent**: Displays grid of books with filtering
 - **BookDetailsComponent**: Shows detailed book information
 - **HomeComponent**: Main landing page
@@ -76,6 +87,7 @@ src/
 The application features a modern, responsive header with the following characteristics:
 
 ### Design
+
 - Fixed position header that stays at the top while scrolling
 - Clean, modern design with subtle box shadow
 - Responsive layout that adapts to different screen sizes
@@ -83,6 +95,7 @@ The application features a modern, responsive header with the following characte
 - Height of 60px for optimal visibility
 
 ### Navigation
+
 - Logo section with book icon and app name
 - Main navigation links with icons:
   - Home (house icon)
@@ -92,6 +105,7 @@ The application features a modern, responsive header with the following characte
 - Smooth hover transitions
 
 ### Styling Features
+
 - Custom color scheme with #0066cc for the logo
 - Subtle animations on hover
 - Font Awesome icons for visual enhancement
@@ -100,6 +114,7 @@ The application features a modern, responsive header with the following characte
 - Mobile-responsive design
 
 ### Technical Implementation
+
 - Standalone Angular component
 - RouterModule integration for navigation
 - RouterLinkActive for active route highlighting
@@ -108,6 +123,7 @@ The application features a modern, responsive header with the following characte
 - Modular SCSS structure
 
 ### Code Organization
+
 - Component-based architecture
 - Separation of concerns (HTML, CSS, TS)
 - Clean, semantic HTML structure
@@ -117,15 +133,18 @@ The application features a modern, responsive header with the following characte
 ## Design Decisions
 
 1. **Standalone Components**
+
    - Improved modularity and tree-shaking
    - Simplified dependency management
 
 2. **Reactive Programming**
+
    - RxJS for state management
    - Improved error handling
    - Better async operation management
 
 3. **Responsive Design**
+
    - Mobile-first approach
    - Flexible grid system
    - Breakpoints for different screen sizes
@@ -138,6 +157,7 @@ The application features a modern, responsive header with the following characte
 ## Setup and Installation
 
 1. **Prerequisites**
+
    ```bash
    Node.js (Latest LTS version)
    npm (comes with Node.js)
@@ -145,6 +165,7 @@ The application features a modern, responsive header with the following characte
    ```
 
 2. **Installation**
+
    ```bash
    # Clone the repository
    git clone [repository-url]
@@ -182,11 +203,13 @@ ng generate component component-name
 ## Future Enhancements
 
 1. **Authentication & Authorization**
+
    - User authentication system
    - Role-based access control
    - User profiles
 
 2. **Advanced Features**
+
    - Book return functionality
    - Late return penalties
    - Book reservations

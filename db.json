@@ -104,7 +104,7 @@
       "author": "J.K. Rowling",
       "year": 1997,
       "genre": "Fantastique",
-      "copies": 17,
+      "copies": 16,
       "imageUrl": "https://m.media-amazon.com/images/I/81YOuOGFCJL.jpg",
       "description": "Le premier tome de la célèbre saga de Harry Potter, un jeune garçon qui découvre qu'il est un sorcier et part étudier à Poudlard.",
       "isbn": "978-2070643028",
@@ -289,7 +289,7 @@
       "status": "Borrowed"
     },
     {
-      "id": 0,
+      "id": "0",
       "bookTitle": "Atomic Habits",
       "userId": 1,
       "borrowDate": "2024-12-07T07:56:56.043Z",
@@ -297,7 +297,7 @@
       "status": "Borrowed"
     },
     {
-      "id": 0,
+      "id": "0",
       "bookTitle": "Atomic Habits",
       "userId": 1,
       "borrowDate": "2024-12-07T07:57:01.753Z",
@@ -305,11 +305,19 @@
       "status": "Borrowed"
     },
     {
-      "id": 0,
+      "id": "0",
       "bookTitle": "Harry Potter à l'école des sorciers",
       "userId": 1,
       "borrowDate": "2024-12-07T07:59:18.162Z",
       "returnDate": "2024-12-21T07:59:18.162Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "bookTitle": "Harry Potter à l'école des sorciers",
+      "userId": 1,
+      "borrowDate": "2024-12-11T19:31:28.348Z",
+      "returnDate": "2024-12-25T19:31:28.352Z",
       "status": "Borrowed"
     }
   ]
