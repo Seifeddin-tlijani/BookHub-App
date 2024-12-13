@@ -51,6 +51,7 @@
         <button
           class="btn-action"
           [class.returned]="borrow.status === 'Returned'"
+          (click)="onReturn(borrow.id)"
         >
           <i
             class="fas"
@@ -59,6 +60,7 @@
           ></i>
           {{ borrow.status === "Borrowed" ? "Return Book" : "Returned" }}
         </button>
+
         <button class="btn-action btn-details">
           <i class="fas fa-info-circle"></i>
           View Details

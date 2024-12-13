@@ -18,15 +18,15 @@ import { of, catchError, finalize, switchMap } from 'rxjs';
 export class BookListComponent implements OnInit {
   books: Book[] = [];
   filteredBooks: Book[] = [];
-  searchTerm: string = '';
-  selectedGenre: string = '';
-  sortBy: string = 'year';
-  loading: boolean = true;
+  searchTerm = '';
+  selectedGenre = '';
+  sortBy = 'year';
+  loading = true;
   error: string | null = null;
   genres: string[] = [];
-  showGenreDropdown: boolean = false;
-  showSortDropdown: boolean = false;
-  borrowingBooks: Set<string> = new Set();
+  showGenreDropdown = false;
+  showSortDropdown = false;
+  borrowingBooks = new Set<string>();
 
   constructor(private bookService: BookService, private borrowService: BorrowService) {}
 

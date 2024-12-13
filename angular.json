@@ -33,7 +33,6 @@
           },
           "configurations": {
             "production": {
-      
               "budgets": [
                 {
                   "type": "initial",
@@ -87,7 +86,6 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-
               "src/styles.css"
             ],
             "scripts": [
@@ -96,11 +94,23 @@
               "node_modules/jquery/dist/jquery.min.js"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }

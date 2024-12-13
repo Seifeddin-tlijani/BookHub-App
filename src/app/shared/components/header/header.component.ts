@@ -6,14 +6,8 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-    RouterModule
-  ],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
-  constructor() {}
-}
+export class HeaderComponent {}

@@ -21,5 +21,7 @@ export class HomeComponent implements OnInit {
     this.books$ = this.bookService.getBooks();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('books' + this.books$);
+  }
 }

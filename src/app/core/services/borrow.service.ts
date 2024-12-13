@@ -4,10 +4,9 @@ import { Borrow } from '../models/borrow';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BorrowService {
-
   private apiUrl = 'http://localhost:3000/borrows';
 
   constructor(private http: HttpClient) {}
@@ -31,6 +30,7 @@ export class BorrowService {
   deleteBorrow(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
-
-
+  updateStatus(borrowId: number, status: string): Observable<Borrow> {
+    return this.http.put<Borrow>(`${this.apiUrl}/${borrowId}`, { status });
+  }
 }

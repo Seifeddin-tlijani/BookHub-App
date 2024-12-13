@@ -11,7 +11,7 @@ import { Book } from '../../../../core/models/book';
 })
 export class BookEditComponent implements OnInit {
   bookForm: FormGroup;
-  bookId: string = '';
+  bookId = '';
   originalBook: Book | null = null;
   genres: string[] = [];
 

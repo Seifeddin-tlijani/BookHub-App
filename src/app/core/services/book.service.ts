@@ -8,7 +8,7 @@ import { Book } from '../models/book';
 })
 export class BookService {
   private apiUrl = `http://localhost:3000/books`;
-  private genres: Set<string> = new Set();
+  private genres = new Set<string>();
 
   constructor(private http: HttpClient) {}
 

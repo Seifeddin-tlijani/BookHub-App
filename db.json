@@ -48,7 +48,7 @@
       "author": "Tara Westover",
       "year": 2018,
       "genre": "Memoir",
-      "copies": 5,
+      "copies": 1,
       "imageUrl": "https://m.media-amazon.com/images/I/81WojUxbbFL.jpg",
       "description": "A powerful memoir of a young woman who grew up in a strict and abusive household in rural Idaho and later pursued an education that transformed her life.",
       "isbn": "978-0399590504",
@@ -129,12 +129,8 @@
   ],
   "borrows": [
     {
-      "id": "1",
-      "bookTitle": "L'Alchimiste",
-      "userId": 101,
-      "borrowDate": "2024-12-01",
-      "returnDate": "2024-12-15",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "1"
     },
     {
       "id": "2",
@@ -145,39 +141,23 @@
       "status": "Returned"
     },
     {
-      "id": "0",
-      "bookTitle": "The Midnight Library",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:22:36.491Z",
-      "returnDate": "2024-12-21T06:22:36.497Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "0"
     },
     {
-      "id": "0",
-      "bookTitle": "The Midnight Library",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:22:39.789Z",
-      "returnDate": "2024-12-21T06:22:39.789Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "27"
     },
     {
-      "id": "0",
-      "bookTitle": "The Midnight Library",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:22:42.209Z",
-      "returnDate": "2024-12-21T06:22:42.209Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "3"
     },
     {
-      "id": "0",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:25:32.777Z",
-      "returnDate": "2024-12-21T06:25:32.777Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "4"
     },
     {
-      "id": "0",
+      "id": "5",
       "bookTitle": "Becoming",
       "userId": 1,
       "borrowDate": "2024-12-07T06:25:35.385Z",
@@ -185,47 +165,27 @@
       "status": "Borrowed"
     },
     {
-      "id": "0",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:25:37.537Z",
-      "returnDate": "2024-12-21T06:25:37.537Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "6"
     },
     {
-      "id": "0",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:25:39.369Z",
-      "returnDate": "2024-12-21T06:25:39.369Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "7"
     },
     {
-      "id": "0",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:28:33.989Z",
-      "returnDate": "2024-12-21T06:28:33.993Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "8"
     },
     {
-      "id": "0",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:28:36.373Z",
-      "returnDate": "2024-12-21T06:28:36.373Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "9"
     },
     {
-      "id": "0",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:28:38.077Z",
-      "returnDate": "2024-12-21T06:28:38.077Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "10"
     },
     {
-      "id": "0",
+      "id": "11",
       "bookTitle": "Becoming",
       "userId": 1,
       "borrowDate": "2024-12-07T06:28:39.293Z",
@@ -233,7 +193,7 @@
       "status": "Borrowed"
     },
     {
-      "id": "0",
+      "id": "12",
       "bookTitle": "Becoming",
       "userId": 1,
       "borrowDate": "2024-12-07T06:28:40.991Z",
@@ -241,23 +201,15 @@
       "status": "Borrowed"
     },
     {
-      "id": "0",
-      "bookTitle": "Atomic Habits",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:32:29.651Z",
-      "returnDate": "2024-12-21T06:32:29.651Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "13"
     },
     {
-      "id": "0",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:52:31.385Z",
-      "returnDate": "2024-12-21T06:52:31.385Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "14"
     },
     {
-      "id": "0",
+      "id": "14",
       "bookTitle": "Educated",
       "userId": 1,
       "borrowDate": "2024-12-07T06:54:15.409Z",
@@ -265,7 +217,7 @@
       "status": "Borrowed"
     },
     {
-      "id": "0",
+      "id": "15",
       "bookTitle": "Becoming",
       "userId": 1,
       "borrowDate": "2024-12-07T07:05:04.798Z",
@@ -273,52 +225,20 @@
       "status": "Borrowed"
     },
     {
-      "id": "0",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T07:05:35.935Z",
-      "returnDate": "2024-12-21T07:05:35.935Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "16"
     },
     {
-      "id": "0",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T07:08:58.316Z",
-      "returnDate": "2024-12-21T07:08:58.316Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "17"
     },
     {
-      "id": "0",
-      "bookTitle": "Atomic Habits",
-      "userId": 1,
-      "borrowDate": "2024-12-07T07:56:56.043Z",
-      "returnDate": "2024-12-21T07:56:56.047Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "18"
     },
     {
-      "id": "0",
-      "bookTitle": "Atomic Habits",
-      "userId": 1,
-      "borrowDate": "2024-12-07T07:57:01.753Z",
-      "returnDate": "2024-12-21T07:57:01.753Z",
-      "status": "Borrowed"
-    },
-    {
-      "id": "0",
-      "bookTitle": "Harry Potter à l'école des sorciers",
-      "userId": 1,
-      "borrowDate": "2024-12-07T07:59:18.162Z",
-      "returnDate": "2024-12-21T07:59:18.162Z",
-      "status": "Borrowed"
-    },
-    {
-      "id": 0,
-      "bookTitle": "Harry Potter à l'école des sorciers",
-      "userId": 1,
-      "borrowDate": "2024-12-11T19:31:28.348Z",
-      "returnDate": "2024-12-25T19:31:28.352Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "19"
     }
   ]
 }
