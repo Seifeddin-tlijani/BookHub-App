@@ -34,7 +34,7 @@
       "author": "James Clear",
       "year": 2018,
       "genre": "Self-help",
-      "copies": 9,
+      "copies": 8,
       "imageUrl": "https://cultivatewhatmatters.com/cdn/shop/articles/atomic-habits.jpg?v=1624827508",
       "description": "A guide to building good habits and breaking bad ones, focusing on small, actionable changes that lead to remarkable results over time.",
       "isbn": "978-0735211292",
@@ -76,7 +76,7 @@
       "author": "Delia Owens",
       "year": 2018,
       "genre": "Mystery",
-      "copies": 11,
+      "copies": 10,
       "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg",
       "description": "A coming-of-age story set in the marshes of North Carolina, blending a murder mystery with themes of loneliness and resilience.",
       "isbn": "978-0735219106",
@@ -125,6 +125,15 @@
       "publisher": "Gallimard",
       "language": "Français",
       "pages": 184
+    },
+    {
+      "id": "",
+      "title": "Nice",
+      "author": "Jane Austen",
+      "genre": "Nice",
+      "year": 2024,
+      "copies": 1,
+      "imageUrl": "https://bootdey.com/img/Content/avatar/avatar4.png"
     }
   ],
   "borrows": [
@@ -231,6 +240,29 @@
     {
       "status": "Returned",
       "id": "19"
+    },
+    {
+      "id": "0",
+      "bookTitle": "Atomic Habits",
+      "userId": 1,
+      "borrowDate": "2024-12-14T14:02:45.085Z",
+      "returnDate": "2024-12-28T14:02:45.088Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": "0",
+      "bookTitle": "Where the Crawdads Sing",
+      "userId": 1,
+      "borrowDate": "2024-12-14T14:02:56.444Z",
+      "returnDate": "2024-12-28T14:02:56.444Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": 0,
+      "userId": 1,
+      "borrowDate": "2024-12-14T14:18:26.249Z",
+      "returnDate": "2024-12-28T14:18:26.252Z",
+      "status": "Borrowed"
     }
   ]
 }

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class BorrowService {
   private apiUrl = 'http://localhost:3000/borrows';
+  // private apiUrl = '/.netlify/functions/json-server';
 
   constructor(private http: HttpClient) {}
 
