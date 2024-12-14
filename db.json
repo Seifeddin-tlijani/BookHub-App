@@ -157,12 +157,8 @@
       "id": "4"
     },
     {
-      "id": "5",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:25:35.385Z",
-      "returnDate": "2024-12-21T06:25:35.385Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "5"
     },
     {
       "status": "Returned",
@@ -193,12 +189,8 @@
       "status": "Borrowed"
     },
     {
-      "id": "12",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:28:40.991Z",
-      "returnDate": "2024-12-21T06:28:40.991Z",
-      "status": "Borrowed"
+      "status": "Returned",
+      "id": "12"
     },
     {
       "status": "Returned",
