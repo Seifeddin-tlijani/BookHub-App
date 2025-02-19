@@ -4,13 +4,25 @@ import { Book } from '../../../../core/models/book';
 import { BookService } from '../../../../core/services/book.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-book-management',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './book-management.component.html',
-  styleUrls: ['./book-management.component.css']
+  styleUrls: ['./book-management.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class BookManagementComponent implements OnInit {
   books: Book[] = [];
@@ -28,6 +40,8 @@ export class BookManagementComponent implements OnInit {
     copies: 1,
     imageUrl: ''
   };
+  deleteError = false;
+  deletingBookId: string | null = null;
 
   constructor(
     private bookService: BookService,
@@ -116,18 +130,19 @@ export class BookManagementComponent implements OnInit {
 
   deleteBook(book: Book): void {
     if (confirm(`Are you sure you want to delete "${book.title}"?`)) {
-      this.loading = true;
-      this.error = null;
+      this.deletingBookId = book.id;
+      this.deleteError = false;
+      
       this.bookService.deleteBook(book.id).subscribe({
         next: () => {
           this.books = this.books.filter(b => b.id !== book.id);
-          this.onSearch(); // Update filtered books
-          this.loading = false;
+          this.onSearch();
+          this.deletingBookId = null;
         },
         error: (error: Error) => {
-          this.error = 'Failed to delete book. Please try again.';
+          this.deleteError = true;
           console.error('Error deleting book:', error);
-          this.loading = false;
+          this.deletingBookId = null;
         }
       });
     }
@@ -145,5 +160,28 @@ export class BookManagementComponent implements OnInit {
       years.push(year);
     }
     return years;
+  }
+
+  getStockStatus(book: any): string {
+    if (!book.copies) return 'out-of-stock';
+    if (book.copies <= 2) return 'low-stock';
+    return 'in-stock';
+  }
+
+  getStockIcon(book: any): string {
+    if (!book.copies) return 'fa-times-circle';
+    if (book.copies <= 2) return 'fa-exclamation-circle';
+    return 'fa-check-circle';
+  }
+
+  getStockText(book: any): string {
+    if (!book.copies) return 'Out of Stock';
+    if (book.copies <= 2) return `${book.copies} Left`;
+    return `${book.copies} in Stock`;
+  }
+
+  onImageError(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    img.src = 'assets/images/default-book.png';
   }
 }

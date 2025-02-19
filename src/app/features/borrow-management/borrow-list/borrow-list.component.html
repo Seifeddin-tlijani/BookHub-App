@@ -1,71 +1,144 @@
-<div class="borrows-container">
-  <h2 class="page-title">
-    <i class="fa-solid fa-cart-shopping me-2"></i>
-    Borrowed Books Management
-  </h2>
-
-  <div class="borrows-list">
-    <div class="borrow-card" *ngFor="let borrow of borrows">
-      <div class="borrow-header">
-        <div class="book-info">
-          <h3>{{ borrow.bookTitle }}</h3>
-          <span class="book-id">ID: {{ borrow.id }}</span>
-        </div>
-        <span
-          class="status-badge"
-          [class.returned]="borrow.status === 'Returned'"
-        >
-          {{ borrow.status }}
-        </span>
+<div class="borrow-list-container">
+  <!-- Loading State -->
+  <div class="loading-overlay" *ngIf="loading">
+    <div class="spinner-container">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
+      <p class="mt-2">Loading your library's borrowings...</p>
+    </div>
+  </div>
 
-      <div class="borrow-details">
-        <div class="detail-row">
-          <i class="fas fa-user me-2"></i>
-          <span><strong>User ID:</strong> {{ borrow.userId }}</span>
-        </div>
-        <div class="detail-row">
-          <i class="fas fa-calendar-plus me-2"></i>
-          <span
-            ><strong>Borrow Date:</strong>
-            {{ borrow.borrowDate | date : "medium" }}</span
-          >
-        </div>
-        <div class="detail-row">
-          <i class="fas fa-calendar-check me-2"></i>
-          <span
-            ><strong>Return Date:</strong>
-            {{ borrow.returnDate | date : "medium" }}</span
-          >
-        </div>
-        <div class="detail-row">
-          <i class="fas fa-clock me-2"></i>
-          <span
-            ><strong>Duration:</strong>
-            {{ getDurationInDays(borrow.borrowDate, borrow.returnDate) }} days
-          </span>
-        </div>
-      </div>
+  <!-- Error Alert -->
+  <div class="alert alert-danger" *ngIf="error" [@fadeInOut]>
+    <i class="fas fa-exclamation-circle me-2"></i>
+    {{ error }}
+    <button type="button" class="btn-close" (click)="error = null">
+      <span class="visually-hidden">Close alert</span>
+    </button>
+  </div>
 
-      <div class="borrow-actions">
-        <button
-          class="btn-action"
-          [class.returned]="borrow.status === 'Returned'"
-          (click)="onReturn(borrow.id)"
-        >
-          <i
-            class="fas"
-            [class.fa-undo]="borrow.status === 'Borrowed'"
-            [class.fa-check]="borrow.status === 'Returned'"
-          ></i>
-          {{ borrow.status === "Borrowed" ? "Return Book" : "Returned" }}
-        </button>
+  <!-- Header Section -->
+  <div class="header-section">
+    <h1 class="main-title">
+      <i class="fa-solid fa-book-open-reader"></i>
+      Borrow Management
+    </h1>
+    <p class="subtitle">
+      Track and manage your library's book borrowings with ease. View status, process returns, and extend borrow periods all in one place.
+    </p>
+  </div>
 
-        <button class="btn-action btn-details">
-          <i class="fas fa-info-circle"></i>
-          View Details
-        </button>
+  <!-- Borrows Table -->
+  <div class="table-card" *ngIf="borrows.length > 0">
+    <div class="table-header">
+      <h2>
+        <i class="fas fa-list"></i>
+        Active Borrowings
+      </h2>
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          placeholder="Search by book title, author, or borrower..."
+          [(ngModel)]="searchTerm"
+          (input)="onSearch()"
+        />
       </div>
     </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Book Information</th>
+            <th>Borrower</th>
+            <th>Borrow Date</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let borrow of filteredBorrows">
+            <td>
+              <div class="book-info">
+                <img
+                  [src]="borrow.book.imageUrl || 'assets/images/default-book.png'"
+                  [alt]="borrow.book.title"
+                  class="book-thumbnail"
+                  (error)="onImageError($event)"
+                />
+                <div class="book-details">
+                  <h4 class="book-title">{{ borrow.book.title }}</h4>
+                  <p class="book-author">by {{ borrow.book.author }}</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="borrower-info">
+                <i class="fas fa-user-circle"></i>
+                {{ borrow.borrower.name }}
+              </div>
+            </td>
+            <td>
+              <div class="date-info">
+                <i class="fas fa-calendar-check"></i>
+                {{ borrow.borrowDate | date:'MMM d, y' }}
+              </div>
+            </td>
+            <td>
+              <div class="date-info" [class.overdue]="isOverdue(borrow)">
+                <i class="fas fa-calendar-times"></i>
+                {{ borrow.dueDate | date:'MMM d, y' }}
+              </div>
+            </td>
+            <td>
+              <span class="status-badge" [ngClass]="getBorrowStatus(borrow)">
+                <i class="fas" [ngClass]="getStatusIcon(borrow)"></i>
+                {{ getBorrowStatusText(borrow) }}
+              </span>
+            </td>
+            <td>
+              <div class="action-buttons">
+                <button
+                  class="btn btn-icon btn-info"
+                  (click)="viewDetails(borrow)"
+                  title="View complete details"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button
+                  class="btn btn-icon btn-success"
+                  (click)="returnBook(borrow)"
+                  *ngIf="borrow.status !== 'Returned'"
+                  title="Return this book"
+                >
+                  <i class="fas fa-undo"></i>
+                </button>
+                <button
+                  class="btn btn-icon btn-warning"
+                  (click)="extendBorrow(borrow)"
+                  *ngIf="borrow.status !== 'Returned'"
+                  [disabled]="isOverdue(borrow)"
+                  title="Extend borrow period"
+                >
+                  <i class="fas fa-clock"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="!loading && !error && filteredBorrows.length === 0">
+    <i class="fas fa-book-reader"></i>
+    <h3>{{ searchTerm ? "No Matches Found" : "No Active Borrowings" }}</h3>
+    <p>
+      {{ searchTerm ? "Try adjusting your search terms or clearing the search." : "When books are borrowed, they will appear here." }}
+    </p>
   </div>
 </div>

@@ -5,7 +5,7 @@ import { Book } from '../../../../core/models/book';
 import { CommonModule } from '@angular/common';
 import { BorrowService } from '../../../../core/services/borrow.service';
 import { Borrow } from '../../../../core/models/borrow';
-import { catchError, finalize, switchMap } from 'rxjs/operators';
+import { catchError, finalize, switchMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Component({
@@ -20,6 +20,12 @@ export class BookDetailsComponent implements OnInit {
   loading = false;
   error: string | null = null;
   borrowing = false;
+
+  currentUser = {
+    id: '1',
+    name: 'Test User',
+    email: 'test.user@example.com'
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -63,28 +69,30 @@ export class BookDetailsComponent implements OnInit {
     }
 
     this.borrowing = true;
-    const borrow: Borrow = {
-      id: 0, // This will be set by the server
-      bookTitle: this.book.title,
-      userId: 1, // Hardcoded for now
+    const dueDate = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000);
+    
+    const newBorrow: Borrow = {
+      id: '', // Will be set by service
+      book: {
+        id: this.book.id,
+        title: this.book.title,
+        author: this.book.author,
+        imageUrl: this.book.imageUrl
+      },
+      borrower: {
+        name: this.currentUser.name,
+        email: this.currentUser.email
+      },
       borrowDate: new Date().toISOString(),
-      returnDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+      dueDate: dueDate.toISOString(),
       status: 'Borrowed'
     };
 
-    this.borrowService.addBorrow(borrow).pipe(
+    this.borrowService.addBorrow(newBorrow).pipe(
+      tap(response => console.log('Borrow created:', response)),
       switchMap(() => {
-        if (!this.book) {
-          throw new Error('Book not found');
-        }
-        const updatedBook = { ...this.book, copies: this.book.copies - 1 };
+        const updatedBook = { ...this.book!, copies: this.book!.copies - 1 };
         return this.bookService.updateBook(updatedBook);
-      }),
-      catchError((error) => {
-        console.error('Error in borrow process:', error);
-        const errorMessage = error.message || 'Failed to borrow book. Please try again.';
-        alert(errorMessage);
-        return of(null);
       }),
       finalize(() => {
         this.borrowing = false;
@@ -94,7 +102,12 @@ export class BookDetailsComponent implements OnInit {
         if (updatedBook) {
           this.book = updatedBook;
           alert('Book borrowed successfully!');
+          this.router.navigate(['/borrows']);
         }
+      },
+      error: (error) => {
+        console.error('Error in borrow process:', error);
+        alert('Failed to borrow book. Please try again.');
       }
     });
   }

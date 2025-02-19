@@ -4,8 +4,14 @@ import { BorrowListComponent } from './borrow-list/borrow-list.component';
 import { BorrowDetailsComponent } from './borrow-details/borrow-details.component';
 
 const routes: Routes = [
-  { path: '', component: BorrowListComponent },
-  { path: 'details/:id', component: BorrowDetailsComponent }
+  { 
+    path: '', 
+    component: BorrowListComponent 
+  },
+  { 
+    path: ':id', 
+    component: BorrowDetailsComponent 
+  }
 ];
 
 @NgModule({

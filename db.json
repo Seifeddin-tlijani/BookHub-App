@@ -1,26 +1,12 @@
 {
   "books": [
     {
-      "id": "1",
-      "title": "Sapiens: A Brief History of Humankind",
-      "author": "Yuval Noah Harari",
-      "year": 2012,
-      "genre": "Non-fiction",
-      "copies": 10,
-      "imageUrl": "https://m.media-amazon.com/images/I/713jIoMO3UL.jpg",
-      "description": "Sapiens explores the history of humankind, from the Stone Age to the modern age, offering a thought-provoking look at our species’ evolution and impact on the world.",
-      "isbn": "978-0062316097",
-      "publisher": "Harper",
-      "language": "English",
-      "pages": 464
-    },
-    {
       "id": "2",
       "title": "Dune",
       "author": "Frank Herbert",
       "year": 1965,
       "genre": "Science Fiction",
-      "copies": 7,
+      "copies": 0,
       "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRffPzAScWEhlxWdTJQp-ncy3ULH9J8PgMHvw&s",
       "description": "Set in a distant future amidst a huge interstellar empire, Dune tells the story of a young Paul Atreides, whose family takes control of the desert planet Arrakis, the source of a valuable spice.",
       "isbn": "978-0441013593",
@@ -34,7 +20,7 @@
       "author": "James Clear",
       "year": 2018,
       "genre": "Self-help",
-      "copies": 8,
+      "copies": 0,
       "imageUrl": "https://cultivatewhatmatters.com/cdn/shop/articles/atomic-habits.jpg?v=1624827508",
       "description": "A guide to building good habits and breaking bad ones, focusing on small, actionable changes that lead to remarkable results over time.",
       "isbn": "978-0735211292",
@@ -43,26 +29,12 @@
       "pages": 320
     },
     {
-      "id": "5",
-      "title": "Educated",
-      "author": "Tara Westover",
-      "year": 2018,
-      "genre": "Memoir",
-      "copies": 1,
-      "imageUrl": "https://m.media-amazon.com/images/I/81WojUxbbFL.jpg",
-      "description": "A powerful memoir of a young woman who grew up in a strict and abusive household in rural Idaho and later pursued an education that transformed her life.",
-      "isbn": "978-0399590504",
-      "publisher": "Random House",
-      "language": "English",
-      "pages": 352
-    },
-    {
       "id": "6",
       "title": "The Midnight Library",
       "author": "Matt Haig",
       "year": 2020,
       "genre": "Fiction",
-      "copies": 5,
+      "copies": 3,
       "imageUrl": "https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg",
       "description": "Nora Seed finds herself in a library between life and death, where each book represents a different life she could have lived.",
       "isbn": "978-0525559474",
@@ -76,7 +48,7 @@
       "author": "Delia Owens",
       "year": 2018,
       "genre": "Mystery",
-      "copies": 10,
+      "copies": 4,
       "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg",
       "description": "A coming-of-age story set in the marshes of North Carolina, blending a murder mystery with themes of loneliness and resilience.",
       "isbn": "978-0735219106",
@@ -138,131 +110,541 @@
   ],
   "borrows": [
     {
-      "status": "Returned",
-      "id": "1"
-    },
-    {
-      "id": "2",
-      "bookTitle": "Le Petit Prince",
-      "userId": 102,
-      "borrowDate": "2024-11-20",
-      "returnDate": "2024-12-05",
+      "id": "1738845340854",
+      "book": {
+        "id": "4",
+        "title": "Atomic Habits",
+        "author": "James Clear",
+        "imageUrl": "https://cultivatewhatmatters.com/cdn/shop/articles/atomic-habits.jpg?v=1624827508"
+      },
+      "borrower": {
+        "name": "Test User"
+      },
+      "borrowDate": "2025-02-06T12:35:40.854Z",
+      "dueDate": "2025-10-02T12:35:40.854Z",
       "status": "Returned"
     },
     {
-      "status": "Returned",
-      "id": "0"
+      "id": "1738845490310",
+      "book": {
+        "id": "8",
+        "title": "Where the Crawdads Sing",
+        "author": "Delia Owens",
+        "year": 2018,
+        "genre": "Mystery",
+        "copies": 9,
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg",
+        "description": "A coming-of-age story set in the marshes of North Carolina, blending a murder mystery with themes of loneliness and resilience.",
+        "isbn": "978-0735219106",
+        "publisher": "G.P. Putnam's Sons",
+        "language": "English",
+        "pages": 384
+      },
+      "borrower": {
+        "name": "Test User"
+      },
+      "borrowDate": "2025-02-06T12:38:10.310Z",
+      "dueDate": "2025-03-20T12:38:10.310Z",
+      "status": "Returned"
     },
     {
+      "id": "1738845538062",
+      "book": {
+        "id": "8",
+        "title": "Where the Crawdads Sing",
+        "author": "Delia Owens",
+        "year": 2018,
+        "genre": "Mystery",
+        "copies": 8,
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg",
+        "description": "A coming-of-age story set in the marshes of North Carolina, blending a murder mystery with themes of loneliness and resilience.",
+        "isbn": "978-0735219106",
+        "publisher": "G.P. Putnam's Sons",
+        "language": "English",
+        "pages": 384
+      },
+      "borrower": {
+        "name": "Test User"
+      },
+      "borrowDate": "2025-02-06T12:38:58.062Z",
+      "dueDate": "2025-02-20T12:38:58.062Z",
       "status": "Returned",
-      "id": "27"
+      "returnDate": "2025-02-06T12:40:06.766Z"
     },
     {
+      "id": "1738845541422",
+      "book": {
+        "id": "8",
+        "title": "Where the Crawdads Sing",
+        "author": "Delia Owens",
+        "year": 2018,
+        "genre": "Mystery",
+        "copies": 7,
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg",
+        "description": "A coming-of-age story set in the marshes of North Carolina, blending a murder mystery with themes of loneliness and resilience.",
+        "isbn": "978-0735219106",
+        "publisher": "G.P. Putnam's Sons",
+        "language": "English",
+        "pages": 384
+      },
+      "borrower": {
+        "name": "Test User"
+      },
+      "borrowDate": "2025-02-06T12:39:01.422Z",
+      "dueDate": "2025-02-20T12:39:01.422Z",
       "status": "Returned",
-      "id": "3"
+      "returnDate": "2025-02-06T12:40:11.222Z"
     },
     {
+      "id": "1738845673438",
+      "book": {
+        "id": "8",
+        "title": "Where the Crawdads Sing",
+        "author": "Delia Owens",
+        "year": 2018,
+        "genre": "Mystery",
+        "copies": 8,
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg",
+        "description": "A coming-of-age story set in the marshes of North Carolina, blending a murder mystery with themes of loneliness and resilience.",
+        "isbn": "978-0735219106",
+        "publisher": "G.P. Putnam's Sons",
+        "language": "English",
+        "pages": 384
+      },
+      "borrower": {
+        "name": "Test User"
+      },
+      "borrowDate": "2025-02-06T12:41:13.438Z",
+      "dueDate": "2025-03-20T12:41:13.438Z",
       "status": "Returned",
-      "id": "4"
+      "returnDate": "2025-02-06T12:41:31.630Z"
     },
     {
+      "id": "1738845675238",
+      "book": {
+        "id": "8",
+        "title": "Where the Crawdads Sing",
+        "author": "Delia Owens",
+        "year": 2018,
+        "genre": "Mystery",
+        "copies": 7,
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg",
+        "description": "A coming-of-age story set in the marshes of North Carolina, blending a murder mystery with themes of loneliness and resilience.",
+        "isbn": "978-0735219106",
+        "publisher": "G.P. Putnam's Sons",
+        "language": "English",
+        "pages": 384
+      },
+      "borrower": {
+        "name": "Test User"
+      },
+      "borrowDate": "2025-02-06T12:41:15.238Z",
+      "dueDate": "2025-02-20T12:41:15.238Z",
       "status": "Returned",
-      "id": "5"
+      "returnDate": "2025-02-06T12:41:33.462Z"
     },
     {
+      "id": "1739834802469",
+      "book": {
+        "id": "6",
+        "title": "The Midnight Library",
+        "author": "Matt Haig",
+        "year": 2020,
+        "genre": "Fiction",
+        "copies": 3,
+        "imageUrl": "https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg",
+        "description": "Nora Seed finds herself in a library between life and death, where each book represents a different life she could have lived.",
+        "isbn": "978-0525559474",
+        "publisher": "Viking",
+        "language": "English",
+        "pages": 304
+      },
+      "borrower": {
+        "name": "Test User"
+      },
+      "borrowDate": "2025-02-17T23:26:42.469Z",
+      "dueDate": "2025-03-03T23:26:42.469Z",
       "status": "Returned",
-      "id": "6"
+      "returnDate": "2025-02-17T23:26:52.025Z"
     },
     {
-      "status": "Returned",
-      "id": "7"
-    },
-    {
-      "status": "Returned",
-      "id": "8"
-    },
-    {
-      "status": "Returned",
-      "id": "9"
-    },
-    {
-      "status": "Returned",
-      "id": "10"
-    },
-    {
-      "id": "11",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:28:39.293Z",
-      "returnDate": "2024-12-21T06:28:39.293Z",
+      "id": "1739834820357",
+      "book": {
+        "id": "4",
+        "title": "Atomic Habits",
+        "author": "James Clear",
+        "year": 2018,
+        "genre": "Self-help",
+        "copies": 3,
+        "imageUrl": "https://cultivatewhatmatters.com/cdn/shop/articles/atomic-habits.jpg?v=1624827508",
+        "description": "A guide to building good habits and breaking bad ones, focusing on small, actionable changes that lead to remarkable results over time.",
+        "isbn": "978-0735211292",
+        "publisher": "Avery",
+        "language": "English",
+        "pages": 320
+      },
+      "borrower": {
+        "name": "Test User"
+      },
+      "borrowDate": "2025-02-17T23:27:00.357Z",
+      "dueDate": "2025-03-03T23:27:00.357Z",
       "status": "Borrowed"
     },
     {
-      "status": "Returned",
-      "id": "12"
-    },
-    {
-      "status": "Returned",
-      "id": "13"
-    },
-    {
-      "status": "Returned",
-      "id": "14"
-    },
-    {
-      "id": "14",
-      "bookTitle": "Educated",
-      "userId": 1,
-      "borrowDate": "2024-12-07T06:54:15.409Z",
-      "returnDate": "2024-12-21T06:54:15.409Z",
+      "id": "1739834823352",
+      "book": {
+        "id": "8",
+        "title": "Where the Crawdads Sing",
+        "author": "Delia Owens",
+        "year": 2018,
+        "genre": "Mystery",
+        "copies": 8,
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg",
+        "description": "A coming-of-age story set in the marshes of North Carolina, blending a murder mystery with themes of loneliness and resilience.",
+        "isbn": "978-0735219106",
+        "publisher": "G.P. Putnam's Sons",
+        "language": "English",
+        "pages": 384
+      },
+      "borrower": {
+        "name": "Test User"
+      },
+      "borrowDate": "2025-02-17T23:27:03.352Z",
+      "dueDate": "2025-03-31T23:27:03.352Z",
       "status": "Borrowed"
     },
     {
-      "id": "15",
-      "bookTitle": "Becoming",
-      "userId": 1,
-      "borrowDate": "2024-12-07T07:05:04.798Z",
-      "returnDate": "2024-12-21T07:05:04.798Z",
+      "id": "1739834826641",
+      "book": {
+        "id": "6",
+        "title": "The Midnight Library",
+        "author": "Matt Haig",
+        "year": 2020,
+        "genre": "Fiction",
+        "copies": 3,
+        "imageUrl": "https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg",
+        "description": "Nora Seed finds herself in a library between life and death, where each book represents a different life she could have lived.",
+        "isbn": "978-0525559474",
+        "publisher": "Viking",
+        "language": "English",
+        "pages": 304
+      },
+      "borrower": {
+        "name": "Test User"
+      },
+      "borrowDate": "2025-02-17T23:27:06.641Z",
+      "dueDate": "2025-03-17T23:27:06.641Z",
+      "status": "Returned",
+      "returnDate": "2025-02-17T23:27:22.934Z"
+    },
+    {
+      "id": "1739865804300",
+      "book": {
+        "id": "",
+        "title": "Nice",
+        "author": "Jane Austen",
+        "imageUrl": "https://bootdey.com/img/Content/avatar/avatar4.png"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:03:24.300Z",
+      "dueDate": "2025-03-04T08:03:24.300Z",
       "status": "Borrowed"
     },
     {
-      "status": "Returned",
-      "id": "16"
-    },
-    {
-      "status": "Returned",
-      "id": "17"
-    },
-    {
-      "status": "Returned",
-      "id": "18"
-    },
-    {
-      "status": "Returned",
-      "id": "19"
-    },
-    {
-      "id": "0",
-      "bookTitle": "Atomic Habits",
-      "userId": 1,
-      "borrowDate": "2024-12-14T14:02:45.085Z",
-      "returnDate": "2024-12-28T14:02:45.088Z",
+      "id": "1739865811835",
+      "book": {
+        "id": "4",
+        "title": "Atomic Habits",
+        "author": "James Clear",
+        "imageUrl": "https://cultivatewhatmatters.com/cdn/shop/articles/atomic-habits.jpg?v=1624827508"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:03:31.835Z",
+      "dueDate": "2025-03-04T08:03:31.835Z",
       "status": "Borrowed"
     },
     {
-      "id": "0",
-      "bookTitle": "Where the Crawdads Sing",
-      "userId": 1,
-      "borrowDate": "2024-12-14T14:02:56.444Z",
-      "returnDate": "2024-12-28T14:02:56.444Z",
+      "id": "1739865815379",
+      "book": {
+        "id": "4",
+        "title": "Atomic Habits",
+        "author": "James Clear",
+        "imageUrl": "https://cultivatewhatmatters.com/cdn/shop/articles/atomic-habits.jpg?v=1624827508"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:03:35.379Z",
+      "dueDate": "2025-03-04T08:03:35.379Z",
       "status": "Borrowed"
     },
     {
-      "id": 0,
-      "userId": 1,
-      "borrowDate": "2024-12-14T14:18:26.249Z",
-      "returnDate": "2024-12-28T14:18:26.252Z",
+      "id": "1739865817011",
+      "book": {
+        "id": "6",
+        "title": "The Midnight Library",
+        "author": "Matt Haig",
+        "imageUrl": "https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:03:37.011Z",
+      "dueDate": "2025-03-04T08:03:37.011Z",
+      "status": "Returned",
+      "returnDate": "2025-02-18T08:03:56.781Z"
+    },
+    {
+      "id": "1739865817747",
+      "book": {
+        "id": "6",
+        "title": "The Midnight Library",
+        "author": "Matt Haig",
+        "imageUrl": "https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:03:37.747Z",
+      "dueDate": "2025-03-04T08:03:37.747Z",
+      "status": "Returned",
+      "returnDate": "2025-02-18T08:03:54.915Z"
+    },
+    {
+      "id": "1739865818403",
+      "book": {
+        "id": "6",
+        "title": "The Midnight Library",
+        "author": "Matt Haig",
+        "imageUrl": "https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:03:38.403Z",
+      "dueDate": "2025-03-04T08:03:38.403Z",
+      "status": "Returned",
+      "returnDate": "2025-02-18T08:03:52.891Z"
+    },
+    {
+      "id": "1739865848827",
+      "book": {
+        "id": "",
+        "title": "Nice",
+        "author": "Jane Austen",
+        "imageUrl": "https://bootdey.com/img/Content/avatar/avatar4.png"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:04:08.827Z",
+      "dueDate": "2025-03-04T08:04:08.827Z",
       "status": "Borrowed"
+    },
+    {
+      "id": "1739865932067",
+      "book": {
+        "id": "2",
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRffPzAScWEhlxWdTJQp-ncy3ULH9J8PgMHvw&s"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:05:32.067Z",
+      "dueDate": "2025-03-04T08:05:32.067Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": "1739865934895",
+      "book": {
+        "id": "2",
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRffPzAScWEhlxWdTJQp-ncy3ULH9J8PgMHvw&s"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:05:34.895Z",
+      "dueDate": "2025-03-04T08:05:34.895Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": "1739865939409",
+      "book": {
+        "id": "2",
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRffPzAScWEhlxWdTJQp-ncy3ULH9J8PgMHvw&s"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:05:39.409Z",
+      "dueDate": "2025-03-04T08:05:39.409Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": "1739865940867",
+      "book": {
+        "id": "2",
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRffPzAScWEhlxWdTJQp-ncy3ULH9J8PgMHvw&s"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:05:40.867Z",
+      "dueDate": "2025-03-04T08:05:40.867Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": "1739865943167",
+      "book": {
+        "id": "2",
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRffPzAScWEhlxWdTJQp-ncy3ULH9J8PgMHvw&s"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:05:43.167Z",
+      "dueDate": "2025-03-04T08:05:43.167Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": "1739865947035",
+      "book": {
+        "id": "2",
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRffPzAScWEhlxWdTJQp-ncy3ULH9J8PgMHvw&s"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:05:47.035Z",
+      "dueDate": "2025-03-04T08:05:47.035Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": "1739865947891",
+      "book": {
+        "id": "2",
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRffPzAScWEhlxWdTJQp-ncy3ULH9J8PgMHvw&s"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:05:47.891Z",
+      "dueDate": "2025-03-04T08:05:47.891Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": "1739865948579",
+      "book": {
+        "id": "6",
+        "title": "The Midnight Library",
+        "author": "Matt Haig",
+        "imageUrl": "https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T08:05:48.579Z",
+      "dueDate": "2025-03-04T08:05:48.579Z",
+      "status": "Returned",
+      "returnDate": "2025-02-18T22:02:21.634Z"
+    },
+    {
+      "id": "1739916205394",
+      "book": {
+        "id": "8",
+        "title": "Where the Crawdads Sing",
+        "author": "Delia Owens",
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T22:03:25.394Z",
+      "dueDate": "2025-03-04T22:03:25.394Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": "1739916208306",
+      "book": {
+        "id": "8",
+        "title": "Where the Crawdads Sing",
+        "author": "Delia Owens",
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T22:03:28.306Z",
+      "dueDate": "2025-03-04T22:03:28.306Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": "1739916210651",
+      "book": {
+        "id": "8",
+        "title": "Where the Crawdads Sing",
+        "author": "Delia Owens",
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T22:03:30.651Z",
+      "dueDate": "2025-03-04T22:03:30.651Z",
+      "status": "Borrowed"
+    },
+    {
+      "id": "1739916521277",
+      "book": {
+        "id": "6",
+        "title": "The Midnight Library",
+        "author": "Matt Haig",
+        "imageUrl": "https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg"
+      },
+      "borrower": {
+        "name": "Test User",
+        "email": "test.user@example.com"
+      },
+      "borrowDate": "2025-02-18T22:08:41.277Z",
+      "dueDate": "2025-03-04T22:08:41.277Z",
+      "status": "Returned",
+      "returnDate": "2025-02-19T14:04:47.820Z"
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
 import { Book } from '../../../../core/models/book';
 import { BookService } from '../../../../core/services/book.service';
 import { BorrowService } from '../../../../core/services/borrow.service';
@@ -6,7 +6,19 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Borrow } from '../../../../core/models/borrow';
-import { of, catchError, finalize, switchMap } from 'rxjs';
+import { 
+  of, 
+  catchError, 
+  finalize, 
+  switchMap, 
+  Subject, 
+  takeUntil, 
+  debounceTime, 
+  distinctUntilChanged,
+  BehaviorSubject,
+  combineLatest,
+  map
+} from 'rxjs';
 
 @Component({
   selector: 'app-book-list',
@@ -14,13 +26,27 @@ import { of, catchError, finalize, switchMap } from 'rxjs';
   imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BookListComponent implements OnInit {
-  books: Book[] = [];
-  filteredBooks: Book[] = [];
-  searchTerm = '';
-  selectedGenre = '';
-  sortBy = 'year';
+export class BookListComponent implements OnInit, OnDestroy {
+  @ViewChild('searchInput') searchInput!: ElementRef;
+
+  private destroy$ = new Subject<void>();
+  private searchSubject$ = new BehaviorSubject<string>('');
+  private genreSubject$ = new BehaviorSubject<string>('');
+  private sortSubject$ = new BehaviorSubject<string>('year');
+  private booksSubject$ = new BehaviorSubject<Book[]>([]);
+
+  books$ = this.booksSubject$.asObservable();
+  filteredBooks$ = combineLatest([
+    this.books$,
+    this.searchSubject$,
+    this.genreSubject$,
+    this.sortSubject$
+  ]).pipe(
+    map(([books, search, genre, sort]) => this.filterAndSortBooks(books, search, genre, sort))
+  );
+
   loading = true;
   error: string | null = null;
   genres: string[] = [];
@@ -28,77 +54,79 @@ export class BookListComponent implements OnInit {
   showSortDropdown = false;
   borrowingBooks = new Set<string>();
 
-  constructor(private bookService: BookService, private borrowService: BorrowService) {}
+  get searchTerm(): string {
+    return this.searchSubject$.value;
+  }
+
+  set searchTerm(value: string) {
+    this.searchSubject$.next(value);
+  }
+
+  get selectedGenre(): string {
+    return this.genreSubject$.value;
+  }
+
+  set selectedGenre(value: string) {
+    this.genreSubject$.next(value);
+  }
+
+  get sortBy(): string {
+    return this.sortSubject$.value;
+  }
+
+  set sortBy(value: string) {
+    this.sortSubject$.next(value);
+  }
+
+  constructor(
+    private bookService: BookService, 
+    private borrowService: BorrowService
+  ) {}
 
   ngOnInit(): void {
-    this.loading = true;
-    this.bookService.getBooks().subscribe({
-      next: (books) => {
-        this.books = books;
-        this.loading = false;
-        this.loadGenres();
-        this.applyFilters();
-      },
-      error: (error) => {
-        this.error = error;
-        this.loading = false;
-      },
+    this.setupSearchDebounce();
+    this.loadInitialData();
+  }
+
+  private setupSearchDebounce(): void {
+    this.searchSubject$.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      takeUntil(this.destroy$)
+    ).subscribe(() => {
+      // Search is now handled automatically through filteredBooks$
     });
   }
 
-  loadBooks(): void {
+  private loadInitialData(): void {
     this.loading = true;
-    this.bookService.getBooks().subscribe({
-      next: (books) => {
-        this.books = books;
-        this.filteredBooks = books;
-        this.applyFilters();
-        this.loading = false;
-      },
-      error: (error) => {
-        this.error = 'Error loading books';
-        this.loading = false;
-        console.error('Error loading books:', error);
-      },
-    });
+    this.bookService.getBooks()
+      .pipe(
+        takeUntil(this.destroy$),
+        finalize(() => this.loading = false)
+      )
+      .subscribe({
+        next: (books) => {
+          this.booksSubject$.next(books);
+          this.loadGenres();
+        },
+        error: (error) => {
+          this.error = 'Failed to load books. Please try again later.';
+          console.error('Error loading books:', error);
+        }
+      });
   }
 
-  loadGenres(): void {
-    this.genres = this.bookService.getGenres();
-  }
+  private filterAndSortBooks(
+    books: Book[], 
+    search: string, 
+    genre: string, 
+    sort: string
+  ): Book[] {
+    let filtered = [...books];
 
-  onSearch(): void {
-    this.applyFilters();
-  }
-
-  onGenreChange(): void {
-    this.applyFilters();
-  }
-
-  onSortChange(): void {
-    this.applyFilters();
-  }
-
-  clearSearch(): void {
-    this.searchTerm = '';
-    this.applyFilters();
-  }
-
-  toggleGenreDropdown(): void {
-    this.showGenreDropdown = !this.showGenreDropdown;
-    this.showSortDropdown = false; // Close other dropdown
-  }
-
-  toggleSortDropdown(): void {
-    this.showSortDropdown = !this.showSortDropdown;
-    this.showGenreDropdown = false; // Close other dropdown
-  }
-
-  private applyFilters(): void {
-    let filtered = [...this.books];
-
-    if (this.searchTerm) {
-      const searchLower = this.searchTerm.toLowerCase();
+    if (search) {
+      const searchLower = search.toLowerCase();
       filtered = filtered.filter(
         (book) =>
           book.title.toLowerCase().includes(searchLower) ||
@@ -106,12 +134,16 @@ export class BookListComponent implements OnInit {
       );
     }
 
-    if (this.selectedGenre) {
-      filtered = filtered.filter((book) => book.genre === this.selectedGenre);
+    if (genre) {
+      filtered = filtered.filter((book) => book.genre === genre);
     }
 
-    filtered.sort((a, b) => {
-      switch (this.sortBy) {
+    return this.sortBooks(filtered, sort);
+  }
+
+  private sortBooks(books: Book[], sortBy: string): Book[] {
+    return [...books].sort((a, b) => {
+      switch (sortBy) {
         case 'title':
           return a.title.localeCompare(b.title);
         case 'author':
@@ -122,55 +154,87 @@ export class BookListComponent implements OnInit {
           return 0;
       }
     });
-
-    this.filteredBooks = filtered;
   }
 
-  borrowBook(book: Book) {
+  loadGenres(): void {
+    try {
+      this.genres = this.bookService.getGenres();
+    } catch (error) {
+      console.error('Error loading genres:', error);
+      this.error = 'Failed to load genres. Please try again later.';
+    }
+  }
+
+  clearSearch(): void {
+    this.searchTerm = '';
+    this.searchInput?.nativeElement?.focus();
+  }
+
+  toggleGenreDropdown(): void {
+    this.showGenreDropdown = !this.showGenreDropdown;
+    this.showSortDropdown = false;
+  }
+
+  toggleSortDropdown(): void {
+    this.showSortDropdown = !this.showSortDropdown;
+    this.showGenreDropdown = false;
+  }
+
+  borrowBook(book: Book): void {
     if (!book || book.copies <= 0 || this.borrowingBooks.has(book.id)) {
       return;
     }
 
     this.borrowingBooks.add(book.id);
-    const borrow: Borrow = {
-      id: 0,
-      bookTitle: book.title,
-      userId: 1,
+    const dueDate = new Date();
+    dueDate.setDate(dueDate.getDate() + 14);
+    
+    const newBorrow: Borrow = {
+      id: '',
+      book: book,
+      borrower: {
+        name: 'Test User' // TODO: Replace with actual user when auth is implemented
+      },
       borrowDate: new Date().toISOString(),
-      returnDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+      dueDate: dueDate.toISOString(),
       status: 'Borrowed'
     };
 
-    this.borrowService.addBorrow(borrow).pipe(
-      switchMap(() => {
-        const updatedBook = { ...book, copies: book.copies - 1 };
-        return this.bookService.updateBook(updatedBook);
-      }),
-      catchError((error) => {
-        console.error('Error in borrow process:', error);
-        alert('Failed to borrow book. Please try again.');
-        return of(null);
-      }),
-      finalize(() => {
-        this.borrowingBooks.delete(book.id);
-      })
-    ).subscribe({
-      next: (updatedBook) => {
-        if (updatedBook) {
-          // Update both arrays
-          this.books = this.books.map(b => b.id === book.id ? updatedBook : b);
-          this.filteredBooks = this.filteredBooks.map(b => b.id === book.id ? updatedBook : b);
+    this.borrowService.addBorrow(newBorrow)
+      .pipe(
+        takeUntil(this.destroy$),
+        switchMap(() => {
+          const updatedBook = { ...book, copies: book.copies - 1 };
+          return this.bookService.updateBook(updatedBook);
+        }),
+        finalize(() => this.borrowingBooks.delete(book.id))
+      )
+      .subscribe({
+        next: (updatedBook) => {
+          const currentBooks = this.booksSubject$.value;
+          const updatedBooks = currentBooks.map(b => 
+            b.id === updatedBook.id ? updatedBook : b
+          );
+          this.booksSubject$.next(updatedBooks);
           alert('Book borrowed successfully!');
+        },
+        error: (error) => {
+          console.error('Error in borrow process:', error);
+          alert('Failed to borrow book. Please try again.');
         }
-      }
-    });
+      });
   }
 
   isBorrowing(bookId: string): boolean {
     return this.borrowingBooks.has(bookId);
   }
 
-  trackById(index: number, book: Book): string {
+  trackById(_: number, book: Book): string {
     return book.id;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

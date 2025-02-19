@@ -1,1 +1,135 @@
-<p>borrow-details works!</p>
+<div class="borrow-details-container">
+  <!-- Loading State -->
+  <div class="loading-overlay" *ngIf="loading">
+    <div class="spinner-container">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2">Loading borrow details...</p>
+    </div>
+  </div>
+
+  <!-- Error Alert -->
+  <div class="alert alert-danger" *ngIf="error" [@fadeInOut]>
+    <i class="fas fa-exclamation-circle"></i>
+    {{ error }}
+    <button type="button" class="btn-close" (click)="error = null">
+      <span class="visually-hidden">Close alert</span>
+    </button>
+  </div>
+
+  <!-- Back Button -->
+  <button class="back-button" (click)="goBack()">
+    <i class="fas fa-arrow-left"></i>
+    Back to Borrows
+  </button>
+
+  <!-- Borrow Details -->
+  <div class="details-card" *ngIf="borrow">
+    <div class="card-header">
+      <h1>
+        <i class="fa-solid fa-book-open-reader"></i>
+        Borrow Details
+      </h1>
+      <span class="status-badge" [ngClass]="getBorrowStatus()">
+        <i class="fas" [ngClass]="getStatusIcon()"></i>
+        {{ getStatusText() }}
+      </span>
+    </div>
+
+    <div class="card-body">
+      <!-- Book Section -->
+      <div class="book-section">
+        <div class="book-image">
+          <img
+            [src]="borrow.book.imageUrl || 'assets/images/default-book.png'"
+            [alt]="borrow.book.title"
+            (error)="onImageError($event)"
+          />
+        </div>
+        <div class="book-info">
+          <h2 class="book-title">{{ borrow.book.title }}</h2>
+          <p class="book-author">by {{ borrow.book.author }}</p>
+        </div>
+      </div>
+
+      <!-- Borrower Section -->
+      <div class="borrower-section">
+        <h2>Borrower Information</h2>
+        <div class="borrower-info">
+          <div class="borrower-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="borrower-details">
+            <h3>{{ borrow.borrower.name }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dates Section -->
+      <div class="dates-section">
+        <div class="date-card">
+          <h4>Borrow Date</h4>
+          <div class="date-value">
+            <i class="fas fa-calendar-check"></i>
+            {{ borrow.borrowDate | date:'MMM d, y' }}
+          </div>
+        </div>
+
+        <div class="date-card" [class.overdue]="isOverdue()">
+          <h4>Due Date</h4>
+          <div class="date-value">
+            <i class="fas fa-calendar-times"></i>
+            {{ borrow.dueDate | date:'MMM d, y' }}
+          </div>
+        </div>
+
+        <div class="date-card" *ngIf="borrow.returnDate">
+          <h4>Return Date</h4>
+          <div class="date-value">
+            <i class="fas fa-calendar-check"></i>
+            {{ borrow.returnDate | date:'MMM d, y' }}
+          </div>
+        </div>
+
+        <div class="date-card">
+          <h4>Duration</h4>
+          <div class="date-value">
+            <i class="fas fa-clock"></i>
+            {{ getDurationInDays() }} days
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions Section -->
+      <div class="actions-section" *ngIf="borrow.status !== 'Returned'">
+        <button
+          class="btn btn-success"
+          (click)="returnBook()"
+          [disabled]="loading"
+        >
+          <i class="fas fa-undo"></i>
+          Return Book
+        </button>
+        <button
+          class="btn btn-warning"
+          (click)="extendBorrow()"
+          [disabled]="loading || isOverdue()"
+        >
+          <i class="fas fa-clock"></i>
+          Extend Borrow Period
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="!loading && !error && !borrow">
+    <i class="fas fa-exclamation-circle"></i>
+    <h3>Borrow Not Found</h3>
+    <p>The requested borrow record could not be found.</p>
+    <button class="btn btn-success" (click)="goBack()">
+      Return to Borrows List
+    </button>
+  </div>
+</div>

@@ -1,24 +1,13 @@
-const jsonServer = require("json-server");
-const router = jsonServer.router("db.json");
+const jsonServer = require('json-server');
+const server = jsonServer.create();
+const router = jsonServer.router('db.json'); // Your mock database file
 const middlewares = jsonServer.defaults();
 
-module.exports.handler = async (event, context) => {
-  const server = jsonServer.create();
+// Set up middleware and routing
+server.use(middlewares);
+server.use(router);
 
-  server.use(middlewares);
-  server.use(router);
-
-  return new Promise((resolve, reject) => {
-    try {
-      server.handle(event, context, (err, result) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(result);
-        }
-      });
-    } catch (err) {
-      reject(err);
-    }
-  });
-};
+// Start the server
+server.listen(3000, () => {
+  console.log('JSON Server is running');
+});

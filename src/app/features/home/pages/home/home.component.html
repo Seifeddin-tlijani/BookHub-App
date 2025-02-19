@@ -1,1 +1,128 @@
-<app-book-list></app-book-list>
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>
+        Welcome to
+        <span class="brand-name">BookHub</span>
+      </h1>
+      <p class="hero-subtitle">
+        Your modern library management solution. Organize, track, and manage your book collection with ease.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" routerLink="/books">
+          <i class="fas fa-book"></i>
+          Browse Books
+        </button>
+        <button class="btn-secondary" routerLink="/borrows">
+          <i class="fas fa-list"></i>
+          View Borrows
+        </button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <i class="fas fa-books"></i>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="fas fa-book"></i>
+      </div>
+      <div class="stat-content">
+        <h3>Total Books</h3>
+        <p class="stat-value">{{ totalBooks }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="stat-content">
+        <h3>Active Borrows</h3>
+        <p class="stat-value">{{ activeBorrows }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="fas fa-tags"></i>
+      </div>
+      <div class="stat-content">
+        <h3>Genres</h3>
+        <p class="stat-value">{{ uniqueGenres }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Books Cards Section -->
+  <section class="books-cards-section">
+    <div class="section-header">
+      <h2>Available Books</h2>
+      <div class="filters">
+        <select [(ngModel)]="selectedGenre" (change)="filterBooks()" class="filter-select">
+          <option value="">All Genres</option>
+          <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+        </select>
+        
+        <select [(ngModel)]="sortBy" (change)="filterBooks()" class="filter-select">
+          <option value="title">Sort by Title</option>
+          <option value="author">Sort by Author</option>
+          <option value="year">Sort by Year</option>
+        </select>
+
+        <div class="search-bar">
+          <input 
+            type="text" 
+            [(ngModel)]="searchQuery" 
+            (input)="filterBooks()"
+            placeholder="Search books..."
+            class="search-input"
+          >
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="loading">
+      <div class="loading-spinner"></div>
+      <p>Loading books...</p>
+    </div>
+
+    <div *ngIf="error" class="error">
+      <i class="fas fa-exclamation-circle"></i>
+      <p>{{ error }}</p>
+      <button (click)="loadBooks()" class="retry-button">
+        <i class="fas fa-redo"></i> Try Again
+      </button>
+    </div>
+
+    <div class="books-cards-grid" *ngIf="!loading && !error">
+      <div *ngFor="let book of filteredBooks" class="book-card">
+        <div class="book-card-image">
+          <img [src]="book.imageUrl || 'assets/images/default-book.png'" [alt]="book.title">
+        </div>
+        <div class="book-card-content">
+          <h3 class="book-title">{{ book.title }}</h3>
+          <p class="book-author">By {{ book.author }}</p>
+          <p class="book-genre">{{ book.genre }}</p>
+          <div class="book-status" [class.available]="book.copies > 0">
+            {{ book.copies > 0 ? 'Available' : 'Out of Stock' }}
+          </div>
+          <button 
+            class="borrow-button" 
+            [disabled]="book.copies === 0"
+            (click)="borrowBook(book)">
+            Borrow Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!loading && !error && filteredBooks.length === 0" class="no-books">
+      No books found.
+    </div>
+  </section>
+</div>

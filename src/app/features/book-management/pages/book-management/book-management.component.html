@@ -1,18 +1,31 @@
+<div class="alert alert-danger" *ngIf="deleteError" [@fadeInOut]>
+  <i class="fas fa-exclamation-circle me-2"></i>
+  Failed to delete book. Please try again.
+  <button type="button" class="btn-close" (click)="deleteError = false">
+    <span class="visually-hidden">Close alert</span>
+  </button>
+</div>
+<div class="alert alert-warning" *ngIf="!books?.length">
+  <i class="fas fa-info-circle me-2"></i>
+  No books found in the library. Add some books to get started.
+</div>
+
 <div class="book-management-container">
   <!-- Header Section -->
   <div class="header-section">
     <div class="title-wrapper">
-      <h1 class="main-title">
-        <i class="fa-solid fa-tree"></i>
-
-        Chaambi Book Management
-      </h1>
-      <p class="subtitle">Manage your library's book collection</p>
+      <div>
+        <h1 class="main-title">
+          <i class="fa-solid fa-book"></i>
+          BookHub Book Management
+        </h1>
+        <p class="subtitle">Manage your library's book collection</p>
+      </div>
+      <button class="add-book-btn" (click)="showAddForm = !showAddForm">
+        <i class="fas" [class.fa-plus]="!showAddForm" [class.fa-minus]="showAddForm"></i>
+        {{ showAddForm ? 'Close Form' : 'Add New Book' }}
+      </button>
     </div>
-    <button class="btn btn-primary add-book-btn" (click)="showAddForm = !showAddForm">
-      <i class="fas" [class.fa-plus]="!showAddForm" [class.fa-minus]="showAddForm"></i>
-      {{ showAddForm ? 'Cancel' : 'Add New Book' }}
-    </button>
   </div>
 
   <div class="form-card" *ngIf="showAddForm" [@slideInOut]>
@@ -23,7 +36,7 @@
       </h2>
       <p class="text-muted">Fill in the book details below</p>
     </div>
-    
+
     <form (ngSubmit)="onSubmit()" #bookForm="ngForm" class="add-book-form">
       <div class="form-grid">
         <div class="form-group">
@@ -31,13 +44,15 @@
             <i class="fas fa-heading me-1"></i>
             Title
           </label>
-          <input type="text" 
-                 class="form-control" 
-                 id="title" 
-                 name="title"
-                 [(ngModel)]="newBook.title" 
-                 required
-                 placeholder="Enter book title">
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            [(ngModel)]="newBook.title"
+            required
+            placeholder="Enter book title"
+          />
         </div>
 
         <div class="form-group">
@@ -45,13 +60,15 @@
             <i class="fas fa-user me-1"></i>
             Author
           </label>
-          <input type="text" 
-                 class="form-control" 
-                 id="author" 
-                 name="author"
-                 [(ngModel)]="newBook.author" 
-                 required
-                 placeholder="Enter author name">
+          <input
+            type="text"
+            class="form-control"
+            id="author"
+            name="author"
+            [(ngModel)]="newBook.author"
+            required
+            placeholder="Enter author name"
+          />
         </div>
 
         <div class="form-group">
@@ -59,13 +76,15 @@
             <i class="fas fa-tags me-1"></i>
             Genre
           </label>
-          <input type="text" 
-                 class="form-control" 
-                 id="genre" 
-                 name="genre"
-                 [(ngModel)]="newBook.genre" 
-                 required
-                 placeholder="Enter book genre">
+          <input
+            type="text"
+            class="form-control"
+            id="genre"
+            name="genre"
+            [(ngModel)]="newBook.genre"
+            required
+            placeholder="Enter book genre"
+          />
         </div>
 
         <div class="form-group">
@@ -73,13 +92,17 @@
             <i class="fas fa-calendar me-1"></i>
             Year
           </label>
-          <select class="form-select" 
-                  id="year" 
-                  name="year"
-                  [(ngModel)]="newBook.year" 
-                  required>
+          <select
+            class="form-select"
+            id="year"
+            name="year"
+            [(ngModel)]="newBook.year"
+            required
+          >
             <option value="" disabled selected>Enter publication year</option>
-            <option *ngFor="let year of getYearRange()" [value]="year">{{ year }}</option>
+            <option *ngFor="let year of getYearRange()" [value]="year">
+              {{ year }}
+            </option>
           </select>
         </div>
 
@@ -88,14 +111,16 @@
             <i class="fas fa-copy me-1"></i>
             Copies
           </label>
-          <input type="number" 
-                 class="form-control" 
-                 id="copies" 
-                 name="copies"
-                 [(ngModel)]="newBook.copies" 
-                 required 
-                 min="0"
-                 placeholder="Number of copies">
+          <input
+            type="number"
+            class="form-control"
+            id="copies"
+            name="copies"
+            [(ngModel)]="newBook.copies"
+            required
+            min="0"
+            placeholder="Number of copies"
+          />
         </div>
 
         <div class="form-group">
@@ -103,32 +128,34 @@
             <i class="fas fa-image me-1"></i>
             Image URL
           </label>
-          <input type="url" 
-                 class="form-control" 
-                 id="imageUrl" 
-                 name="imageUrl"
-                 [(ngModel)]="newBook.imageUrl" 
-                 required
-                 placeholder="Enter image URL">
+          <input
+            type="url"
+            class="form-control"
+            id="imageUrl"
+            name="imageUrl"
+            [(ngModel)]="newBook.imageUrl"
+            required
+            placeholder="Enter image URL"
+          />
         </div>
       </div>
 
       <div class="form-actions">
-        <button type="button" 
-                class="btn btn-outline-primary" 
-                (click)="showAddForm = false">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="showAddForm = false"
+        >
           <i class="fas fa-times me-2"></i>
           Cancel
         </button>
-        <button type="submit" 
-                class="btn btn-primary" 
-                [disabled]="!bookForm.form.valid || loading">
-          <i class="fas fa-plus me-2" 
-             [class.d-none]="loading">
-          </i>
-          <i class="fas fa-spinner fa-spin me-2"
-             *ngIf="loading">
-          </i>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!bookForm.form.valid || loading"
+        >
+          <i class="fas fa-plus me-2" [class.d-none]="loading"> </i>
+          <i class="fas fa-spinner fa-spin me-2" *ngIf="loading"> </i>
           Add Book
         </button>
       </div>
@@ -149,75 +176,79 @@
     <p class="loading-text">Loading books...</p>
   </div>
 
-  <!-- Books Table -->
-  <div class="table-card" *ngIf="books.length">
-    <div class="table-header">
-      <h2>
-        <i class="fas fa-list me-2"></i>
+  <!-- Book Inventory -->
+  <div class="book-inventory">
+    <div class="inventory-header">
+      <h2 class="inventory-title">
+        <i class="fas fa-list"></i>
         Book Inventory
       </h2>
-      <div class="table-actions">
-        <div class="search-box">
-          <i class="fas fa-search"></i>
-          <input type="text" 
-                 placeholder="Search books..." 
-                 [(ngModel)]="searchTerm"
-                 (input)="onSearch()">
-        </div>
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          placeholder="Search by title, author, or genre..."
+          [(ngModel)]="searchTerm"
+          (input)="onSearch()"
+        />
       </div>
     </div>
 
-    <div class="table-responsive" *ngIf="!loading && !error && filteredBooks.length > 0">
-      <div class="table-container">
+    <!-- Books Table -->
+    <div class="table-card" *ngIf="books.length">
+      <div class="table-responsive">
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" class="image-col">Cover</th>
-              <th scope="col">Title & Author</th>
-              <th scope="col" class="genre-col">Genre</th>
-              <th scope="col" class="status-col">Status</th>
-              <th scope="col" class="actions-col">Actions</th>
+              <th>Book Details</th>
+              <th>Genre</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let book of filteredBooks; trackBy: trackBookById">
-              <td class="image-col">
-                <div class="book-cover">
-                  <img [src]="book.imageUrl || 'assets/images/default-book.png'" 
-                       [alt]="book.title" 
-                       class="book-image">
-                </div>
-              </td>
-              <td>
+            <tr *ngFor="let book of filteredBooks">
+              <td data-label="Book Details">
                 <div class="book-info">
-                  <h4 class="book-title">{{ book.title }}</h4>
-                  <p class="book-author">{{ book.author }}</p>
-                  <div class="book-meta">
-                    <span class="isbn" *ngIf="book.isbn">ISBN: {{ book.isbn }}</span>
-                    <span class="publisher" *ngIf="book.publisher">{{ book.publisher }}</span>
+                  <img
+                    [src]="book.imageUrl || 'assets/images/default-book.png'"
+                    [alt]="book.title"
+                    class="book-thumbnail"
+                    (error)="onImageError($event)"
+                  />
+                  <div class="book-details">
+                    <h4 class="book-title">{{ book.title }}</h4>
+                    <div class="book-meta">
+                      <span>
+                        <i class="fas fa-user"></i>
+                        {{ book.author }}
+                      </span>
+                      <span>
+                        <i class="fas fa-calendar"></i>
+                        {{ book.year }}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </td>
-              <td class="genre-col">
-                <span class="genre-badge">{{ book.genre }}</span>
+              <td data-label="Genre">
+                <span class="status-badge">{{ book.genre }}</span>
               </td>
-              <td class="status-col">
-                <div class="status-wrapper">
-                  <span class="status-badge" [ngClass]="{'available': book.copies > 0, 'out-of-stock': book.copies === 0}">
-                    <i class="fas" [ngClass]="{'fa-check-circle': book.copies > 0, 'fa-times-circle': book.copies === 0}"></i>
-                    {{ book.copies > 0 ? book.copies + ' in stock' : 'Out of stock' }}
-                  </span>
-                </div>
+              <td data-label="Status">
+                <span class="status-badge" [ngClass]="getStockStatus(book)">
+                  <i class="fas" [ngClass]="getStockIcon(book)"></i>
+                  {{ getStockText(book) }}
+                </span>
               </td>
-              <td class="actions-col">
+              <td data-label="Actions">
                 <div class="action-buttons">
-                  <button class="btn btn-icon btn-info" (click)="viewBook(book)" title="View Details">
+                  <button class="btn-icon btn-view" (click)="viewBook(book)">
                     <i class="fas fa-eye"></i>
                   </button>
-                  <button class="btn btn-icon btn-warning" (click)="editBook(book)" title="Edit Book">
+                  <button class="btn-icon btn-edit" (click)="editBook(book)">
                     <i class="fas fa-edit"></i>
                   </button>
-                  <button class="btn btn-icon btn-danger" (click)="deleteBook(book)" title="Delete Book">
+                  <button class="btn-icon btn-delete" (click)="deleteBook(book)">
                     <i class="fas fa-trash"></i>
                   </button>
                 </div>
@@ -229,23 +260,14 @@
     </div>
 
     <!-- Empty State -->
-    <div class="empty-state" *ngIf="!loading && !error && filteredBooks.length === 0">
-      <i class="fas fa-books fa-3x"></i>
-      <h3>{{ searchTerm ? 'No Books Found' : 'No Books in Library' }}</h3>
-      <p>{{ searchTerm ? 'No books match your search criteria.' : 'There are no books in the library yet.' }}</p>
-      <button class="btn btn-primary" (click)="showAddForm = true" *ngIf="!searchTerm">
+    <div class="empty-state" *ngIf="!loading && !books.length">
+      <i class="fas fa-books"></i>
+      <h3>No Books Found</h3>
+      <p>Start building your library by adding some books.</p>
+      <button class="add-book-btn" (click)="showAddForm = true">
+        <i class="fas fa-plus"></i>
         Add Your First Book
       </button>
-      <button class="btn btn-secondary" (click)="searchTerm = ''; onSearch()" *ngIf="searchTerm">
-        Clear Search
-      </button>
-    </div>
-
-    <div class="loading-state" *ngIf="loading">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-      <p class="loading-text">Loading books...</p>
     </div>
   </div>
 </div>
