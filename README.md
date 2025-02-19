@@ -179,11 +179,8 @@ The application features a modern, responsive header with the following characte
    # Install dependencies
    npm install
 
-   # Start JSON Server (in one terminal)
-   json-server --watch db.json
-
-   # Start Angular development server (in another terminal)
-   ng serve
+   # Start JSON Server and Angular in same terminal 
+   npm start
    ```
 
 3. **Access the Application**
